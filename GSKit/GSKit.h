@@ -18,5 +18,6 @@
 #import "UIButton+GSBlock.h"
 #import "GSTool.h"
 #import "GSCameraManager.h"
+#import "GSShapeSlider.h"
 
 #endif /* GSKit_h */

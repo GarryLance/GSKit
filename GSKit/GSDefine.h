@@ -34,4 +34,13 @@
 #define GSSCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 
+//color
+
+#define GSRGBA(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+
+/** 传入一个十六进制的数如0xffffff*/
+#define GSColorHex(hexValue) [UIColor colorWithRed:((float)((hexValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((hexValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(hexValue & 0xFF))/255.0 alpha:1]
+
 #endif /* Header_h */
