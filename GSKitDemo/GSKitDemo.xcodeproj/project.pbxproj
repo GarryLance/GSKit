@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C1A86911D45A999003F6F7B /* GSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A867E1D45A999003F6F7B /* GSCalendar.m */; };
+		1C1A86921D45A999003F6F7B /* GSCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A86801D45A999003F6F7B /* GSCameraManager.m */; };
+		1C1A86931D45A999003F6F7B /* GSPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A86841D45A999003F6F7B /* GSPlayer.m */; };
+		1C1A86941D45A999003F6F7B /* GSTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A86861D45A999003F6F7B /* GSTimer.m */; };
+		1C1A86951D45A999003F6F7B /* GSTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A86881D45A999003F6F7B /* GSTool.m */; };
+		1C1A86961D45A999003F6F7B /* GSWaittingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A868A1D45A999003F6F7B /* GSWaittingView.m */; };
+		1C1A86971D45A999003F6F7B /* UIButton+GSBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A868C1D45A999003F6F7B /* UIButton+GSBlock.m */; };
+		1C1A86981D45A999003F6F7B /* UIImage+GSTint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A868E1D45A999003F6F7B /* UIImage+GSTint.m */; };
+		1C1A86991D45A999003F6F7B /* UIView+GSLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A86901D45A999003F6F7B /* UIView+GSLoading.m */; };
 		1CDEA94D1D421EE5008701BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA94C1D421EE5008701BA /* main.m */; };
 		1CDEA9501D421EE5008701BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA94F1D421EE5008701BA /* AppDelegate.m */; };
 		1CDEA9531D421EE5008701BA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9521D421EE5008701BA /* ViewController.m */; };
@@ -14,15 +23,6 @@
 		1CDEA95B1D421EE5008701BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CDEA9591D421EE5008701BA /* LaunchScreen.storyboard */; };
 		1CDEA9661D421EE5008701BA /* GSKitDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9651D421EE5008701BA /* GSKitDemoTests.m */; };
 		1CDEA9711D421EE5008701BA /* GSKitDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9701D421EE5008701BA /* GSKitDemoUITests.m */; };
-		1CDEA9931D42207A008701BA /* GSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9801D42207A008701BA /* GSCalendar.m */; };
-		1CDEA9941D42207A008701BA /* GSCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9821D42207A008701BA /* GSCameraManager.m */; };
-		1CDEA9951D42207A008701BA /* GSPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9861D42207A008701BA /* GSPlayer.m */; };
-		1CDEA9961D42207A008701BA /* GSTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9881D42207A008701BA /* GSTimer.m */; };
-		1CDEA9971D42207A008701BA /* GSTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA98A1D42207A008701BA /* GSTool.m */; };
-		1CDEA9981D42207A008701BA /* GSWaittingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA98C1D42207A008701BA /* GSWaittingView.m */; };
-		1CDEA9991D42207A008701BA /* UIButton+GSBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA98E1D42207A008701BA /* UIButton+GSBlock.m */; };
-		1CDEA99A1D42207A008701BA /* UIImage+GSTint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9901D42207A008701BA /* UIImage+GSTint.m */; };
-		1CDEA99B1D42207A008701BA /* UIView+GSLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9921D42207A008701BA /* UIView+GSLoading.m */; };
 		1CDEA9A61D422262008701BA /* GLCameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA99D1D422262008701BA /* GLCameraNavigationController.m */; };
 		1CDEA9A71D422262008701BA /* GLCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA99F1D422262008701BA /* GLCameraViewController.m */; };
 		1CDEA9A81D422262008701BA /* GLEditPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9A11D422262008701BA /* GLEditPhotoViewController.m */; };
@@ -48,6 +48,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C1A867D1D45A999003F6F7B /* GSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCalendar.h; sourceTree = "<group>"; };
+		1C1A867E1D45A999003F6F7B /* GSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCalendar.m; sourceTree = "<group>"; };
+		1C1A867F1D45A999003F6F7B /* GSCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCameraManager.h; sourceTree = "<group>"; };
+		1C1A86801D45A999003F6F7B /* GSCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCameraManager.m; sourceTree = "<group>"; };
+		1C1A86811D45A999003F6F7B /* GSDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSDefine.h; sourceTree = "<group>"; };
+		1C1A86821D45A999003F6F7B /* GSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSKit.h; sourceTree = "<group>"; };
+		1C1A86831D45A999003F6F7B /* GSPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSPlayer.h; sourceTree = "<group>"; };
+		1C1A86841D45A999003F6F7B /* GSPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSPlayer.m; sourceTree = "<group>"; };
+		1C1A86851D45A999003F6F7B /* GSTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSTimer.h; sourceTree = "<group>"; };
+		1C1A86861D45A999003F6F7B /* GSTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSTimer.m; sourceTree = "<group>"; };
+		1C1A86871D45A999003F6F7B /* GSTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSTool.h; sourceTree = "<group>"; };
+		1C1A86881D45A999003F6F7B /* GSTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSTool.m; sourceTree = "<group>"; };
+		1C1A86891D45A999003F6F7B /* GSWaittingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSWaittingView.h; sourceTree = "<group>"; };
+		1C1A868A1D45A999003F6F7B /* GSWaittingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSWaittingView.m; sourceTree = "<group>"; };
+		1C1A868B1D45A999003F6F7B /* UIButton+GSBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+GSBlock.h"; sourceTree = "<group>"; };
+		1C1A868C1D45A999003F6F7B /* UIButton+GSBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+GSBlock.m"; sourceTree = "<group>"; };
+		1C1A868D1D45A999003F6F7B /* UIImage+GSTint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GSTint.h"; sourceTree = "<group>"; };
+		1C1A868E1D45A999003F6F7B /* UIImage+GSTint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GSTint.m"; sourceTree = "<group>"; };
+		1C1A868F1D45A999003F6F7B /* UIView+GSLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GSLoading.h"; sourceTree = "<group>"; };
+		1C1A86901D45A999003F6F7B /* UIView+GSLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GSLoading.m"; sourceTree = "<group>"; };
 		1CDEA9481D421EE5008701BA /* GSKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GSKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CDEA94C1D421EE5008701BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CDEA94E1D421EE5008701BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -63,26 +83,6 @@
 		1CDEA96C1D421EE5008701BA /* GSKitDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GSKitDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CDEA9701D421EE5008701BA /* GSKitDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GSKitDemoUITests.m; sourceTree = "<group>"; };
 		1CDEA9721D421EE5008701BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1CDEA97F1D42207A008701BA /* GSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCalendar.h; sourceTree = "<group>"; };
-		1CDEA9801D42207A008701BA /* GSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCalendar.m; sourceTree = "<group>"; };
-		1CDEA9811D42207A008701BA /* GSCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCameraManager.h; sourceTree = "<group>"; };
-		1CDEA9821D42207A008701BA /* GSCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCameraManager.m; sourceTree = "<group>"; };
-		1CDEA9831D42207A008701BA /* GSDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSDefine.h; sourceTree = "<group>"; };
-		1CDEA9841D42207A008701BA /* GSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSKit.h; sourceTree = "<group>"; };
-		1CDEA9851D42207A008701BA /* GSPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSPlayer.h; sourceTree = "<group>"; };
-		1CDEA9861D42207A008701BA /* GSPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSPlayer.m; sourceTree = "<group>"; };
-		1CDEA9871D42207A008701BA /* GSTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSTimer.h; sourceTree = "<group>"; };
-		1CDEA9881D42207A008701BA /* GSTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSTimer.m; sourceTree = "<group>"; };
-		1CDEA9891D42207A008701BA /* GSTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSTool.h; sourceTree = "<group>"; };
-		1CDEA98A1D42207A008701BA /* GSTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSTool.m; sourceTree = "<group>"; };
-		1CDEA98B1D42207A008701BA /* GSWaittingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSWaittingView.h; sourceTree = "<group>"; };
-		1CDEA98C1D42207A008701BA /* GSWaittingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSWaittingView.m; sourceTree = "<group>"; };
-		1CDEA98D1D42207A008701BA /* UIButton+GSBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+GSBlock.h"; sourceTree = "<group>"; };
-		1CDEA98E1D42207A008701BA /* UIButton+GSBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+GSBlock.m"; sourceTree = "<group>"; };
-		1CDEA98F1D42207A008701BA /* UIImage+GSTint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GSTint.h"; sourceTree = "<group>"; };
-		1CDEA9901D42207A008701BA /* UIImage+GSTint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GSTint.m"; sourceTree = "<group>"; };
-		1CDEA9911D42207A008701BA /* UIView+GSLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GSLoading.h"; sourceTree = "<group>"; };
-		1CDEA9921D42207A008701BA /* UIView+GSLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GSLoading.m"; sourceTree = "<group>"; };
 		1CDEA99C1D422262008701BA /* GLCameraNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCameraNavigationController.h; sourceTree = "<group>"; };
 		1CDEA99D1D422262008701BA /* GLCameraNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCameraNavigationController.m; sourceTree = "<group>"; };
 		1CDEA99E1D422262008701BA /* GLCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCameraViewController.h; sourceTree = "<group>"; };
@@ -120,10 +120,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C1A867C1D45A999003F6F7B /* GSKit */ = {
+			isa = PBXGroup;
+			children = (
+				1C1A867D1D45A999003F6F7B /* GSCalendar.h */,
+				1C1A867E1D45A999003F6F7B /* GSCalendar.m */,
+				1C1A867F1D45A999003F6F7B /* GSCameraManager.h */,
+				1C1A86801D45A999003F6F7B /* GSCameraManager.m */,
+				1C1A86811D45A999003F6F7B /* GSDefine.h */,
+				1C1A86821D45A999003F6F7B /* GSKit.h */,
+				1C1A86831D45A999003F6F7B /* GSPlayer.h */,
+				1C1A86841D45A999003F6F7B /* GSPlayer.m */,
+				1C1A86851D45A999003F6F7B /* GSTimer.h */,
+				1C1A86861D45A999003F6F7B /* GSTimer.m */,
+				1C1A86871D45A999003F6F7B /* GSTool.h */,
+				1C1A86881D45A999003F6F7B /* GSTool.m */,
+				1C1A86891D45A999003F6F7B /* GSWaittingView.h */,
+				1C1A868A1D45A999003F6F7B /* GSWaittingView.m */,
+				1C1A868B1D45A999003F6F7B /* UIButton+GSBlock.h */,
+				1C1A868C1D45A999003F6F7B /* UIButton+GSBlock.m */,
+				1C1A868D1D45A999003F6F7B /* UIImage+GSTint.h */,
+				1C1A868E1D45A999003F6F7B /* UIImage+GSTint.m */,
+				1C1A868F1D45A999003F6F7B /* UIView+GSLoading.h */,
+				1C1A86901D45A999003F6F7B /* UIView+GSLoading.m */,
+			);
+			name = GSKit;
+			path = ../GSKit;
+			sourceTree = "<group>";
+		};
 		1CDEA93F1D421EE5008701BA = {
 			isa = PBXGroup;
 			children = (
-				1CDEA97E1D42207A008701BA /* GSKit */,
+				1C1A867C1D45A999003F6F7B /* GSKit */,
 				1CDEA94A1D421EE5008701BA /* GSKitDemo */,
 				1CDEA9641D421EE5008701BA /* GSKitDemoTests */,
 				1CDEA96F1D421EE5008701BA /* GSKitDemoUITests */,
@@ -190,33 +218,6 @@
 				1CDEA9721D421EE5008701BA /* Info.plist */,
 			);
 			path = GSKitDemoUITests;
-			sourceTree = "<group>";
-		};
-		1CDEA97E1D42207A008701BA /* GSKit */ = {
-			isa = PBXGroup;
-			children = (
-				1CDEA97F1D42207A008701BA /* GSCalendar.h */,
-				1CDEA9801D42207A008701BA /* GSCalendar.m */,
-				1CDEA9811D42207A008701BA /* GSCameraManager.h */,
-				1CDEA9821D42207A008701BA /* GSCameraManager.m */,
-				1CDEA9831D42207A008701BA /* GSDefine.h */,
-				1CDEA9841D42207A008701BA /* GSKit.h */,
-				1CDEA9851D42207A008701BA /* GSPlayer.h */,
-				1CDEA9861D42207A008701BA /* GSPlayer.m */,
-				1CDEA9871D42207A008701BA /* GSTimer.h */,
-				1CDEA9881D42207A008701BA /* GSTimer.m */,
-				1CDEA9891D42207A008701BA /* GSTool.h */,
-				1CDEA98A1D42207A008701BA /* GSTool.m */,
-				1CDEA98B1D42207A008701BA /* GSWaittingView.h */,
-				1CDEA98C1D42207A008701BA /* GSWaittingView.m */,
-				1CDEA98D1D42207A008701BA /* UIButton+GSBlock.h */,
-				1CDEA98E1D42207A008701BA /* UIButton+GSBlock.m */,
-				1CDEA98F1D42207A008701BA /* UIImage+GSTint.h */,
-				1CDEA9901D42207A008701BA /* UIImage+GSTint.m */,
-				1CDEA9911D42207A008701BA /* UIView+GSLoading.h */,
-				1CDEA9921D42207A008701BA /* UIView+GSLoading.m */,
-			);
-			path = GSKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,23 +349,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CDEA9961D42207A008701BA /* GSTimer.m in Sources */,
-				1CDEA9931D42207A008701BA /* GSCalendar.m in Sources */,
-				1CDEA99B1D42207A008701BA /* UIView+GSLoading.m in Sources */,
-				1CDEA9941D42207A008701BA /* GSCameraManager.m in Sources */,
+				1C1A86981D45A999003F6F7B /* UIImage+GSTint.m in Sources */,
 				1CDEA9A71D422262008701BA /* GLCameraViewController.m in Sources */,
+				1C1A86961D45A999003F6F7B /* GSWaittingView.m in Sources */,
+				1C1A86951D45A999003F6F7B /* GSTool.m in Sources */,
 				1CDEA9531D421EE5008701BA /* ViewController.m in Sources */,
 				1CDEA9A81D422262008701BA /* GLEditPhotoViewController.m in Sources */,
-				1CDEA9991D42207A008701BA /* UIButton+GSBlock.m in Sources */,
-				1CDEA9971D42207A008701BA /* GSTool.m in Sources */,
-				1CDEA99A1D42207A008701BA /* UIImage+GSTint.m in Sources */,
-				1CDEA9951D42207A008701BA /* GSPlayer.m in Sources */,
+				1C1A86971D45A999003F6F7B /* UIButton+GSBlock.m in Sources */,
 				1CDEA9A61D422262008701BA /* GLCameraNavigationController.m in Sources */,
 				1CDEA9501D421EE5008701BA /* AppDelegate.m in Sources */,
 				1CDEA9A91D422262008701BA /* GLPublishViewController.m in Sources */,
-				1CDEA9981D42207A008701BA /* GSWaittingView.m in Sources */,
+				1C1A86931D45A999003F6F7B /* GSPlayer.m in Sources */,
 				1CDEA9AA1D422262008701BA /* MianViewController.m in Sources */,
+				1C1A86911D45A999003F6F7B /* GSCalendar.m in Sources */,
+				1C1A86991D45A999003F6F7B /* UIView+GSLoading.m in Sources */,
+				1C1A86921D45A999003F6F7B /* GSCameraManager.m in Sources */,
 				1CDEA94D1D421EE5008701BA /* main.m in Sources */,
+				1C1A86941D45A999003F6F7B /* GSTimer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
