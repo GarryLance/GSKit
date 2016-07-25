@@ -16,6 +16,8 @@
 		1C1A86971D45A999003F6F7B /* UIButton+GSBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A868C1D45A999003F6F7B /* UIButton+GSBlock.m */; };
 		1C1A86981D45A999003F6F7B /* UIImage+GSTint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A868E1D45A999003F6F7B /* UIImage+GSTint.m */; };
 		1C1A86991D45A999003F6F7B /* UIView+GSLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A86901D45A999003F6F7B /* UIView+GSLoading.m */; };
+		1C1A86AE1D45B286003F6F7B /* GSIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A86AA1D45B286003F6F7B /* GSIndicatorView.m */; };
+		1C1A86AF1D45B286003F6F7B /* GSShapeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A86AB1D45B286003F6F7B /* GSShapeSlider.m */; };
 		1CDEA94D1D421EE5008701BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA94C1D421EE5008701BA /* main.m */; };
 		1CDEA9501D421EE5008701BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA94F1D421EE5008701BA /* AppDelegate.m */; };
 		1CDEA9531D421EE5008701BA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9521D421EE5008701BA /* ViewController.m */; };
@@ -68,6 +70,10 @@
 		1C1A868E1D45A999003F6F7B /* UIImage+GSTint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GSTint.m"; sourceTree = "<group>"; };
 		1C1A868F1D45A999003F6F7B /* UIView+GSLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GSLoading.h"; sourceTree = "<group>"; };
 		1C1A86901D45A999003F6F7B /* UIView+GSLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GSLoading.m"; sourceTree = "<group>"; };
+		1C1A86AA1D45B286003F6F7B /* GSIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSIndicatorView.m; sourceTree = "<group>"; };
+		1C1A86AB1D45B286003F6F7B /* GSShapeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSShapeSlider.m; sourceTree = "<group>"; };
+		1C1A86AC1D45B286003F6F7B /* GSShapeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSShapeSlider.h; sourceTree = "<group>"; };
+		1C1A86AD1D45B286003F6F7B /* GSIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSIndicatorView.h; sourceTree = "<group>"; };
 		1CDEA9481D421EE5008701BA /* GSKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GSKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CDEA94C1D421EE5008701BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CDEA94E1D421EE5008701BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -123,6 +129,10 @@
 		1C1A867C1D45A999003F6F7B /* GSKit */ = {
 			isa = PBXGroup;
 			children = (
+				1C1A86AC1D45B286003F6F7B /* GSShapeSlider.h */,
+				1C1A86AB1D45B286003F6F7B /* GSShapeSlider.m */,
+				1C1A86AD1D45B286003F6F7B /* GSIndicatorView.h */,
+				1C1A86AA1D45B286003F6F7B /* GSIndicatorView.m */,
 				1C1A867D1D45A999003F6F7B /* GSCalendar.h */,
 				1C1A867E1D45A999003F6F7B /* GSCalendar.m */,
 				1C1A867F1D45A999003F6F7B /* GSCameraManager.h */,
@@ -357,8 +367,10 @@
 				1CDEA9A81D422262008701BA /* GLEditPhotoViewController.m in Sources */,
 				1C1A86971D45A999003F6F7B /* UIButton+GSBlock.m in Sources */,
 				1CDEA9A61D422262008701BA /* GLCameraNavigationController.m in Sources */,
+				1C1A86AF1D45B286003F6F7B /* GSShapeSlider.m in Sources */,
 				1CDEA9501D421EE5008701BA /* AppDelegate.m in Sources */,
 				1CDEA9A91D422262008701BA /* GLPublishViewController.m in Sources */,
+				1C1A86AE1D45B286003F6F7B /* GSIndicatorView.m in Sources */,
 				1C1A86931D45A999003F6F7B /* GSPlayer.m in Sources */,
 				1CDEA9AA1D422262008701BA /* MianViewController.m in Sources */,
 				1C1A86911D45A999003F6F7B /* GSCalendar.m in Sources */,

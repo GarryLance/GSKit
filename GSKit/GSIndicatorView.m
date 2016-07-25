@@ -7,6 +7,7 @@
 //
 
 #import "GSIndicatorView.h"
+#import "GSDefine.h"
 
 @interface GSIndicatorView ()
 
