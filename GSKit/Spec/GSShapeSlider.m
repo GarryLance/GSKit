@@ -24,7 +24,14 @@
 + (instancetype)zaozaoAssessmentSlider:(CGFloat)height
 {
     GSShapeSlider * slider = [[GSShapeSlider alloc] initWithZaozaoAssessmentSlider:height];
-    return slider;
+    return [slider autorelease];
+}
+
+
+- (void)dealloc
+{
+    [_progressView release];
+    [super dealloc];
 }
 
 
@@ -50,6 +57,7 @@
         progressView.layer.cornerRadius = lineWidth/2;
         progressView.layer.backgroundColor = GSRGBA(253,142,70,1).CGColor;
         [self addSubview:progressView];
+        [progressView release];
         self.progressView = progressView;
         
         UIView * trackView = [[UIView alloc] init];
@@ -57,6 +65,7 @@
         trackView.layer.cornerRadius = progressView.layer.cornerRadius;
         trackView.layer.backgroundColor = GSRGBA(245, 242, 215, 1).CGColor;
         [self insertSubview:trackView belowSubview:progressView];
+        [trackView release];
 
         GSIndicatorView * indicatorView = [GSIndicatorView zaozaoAssessmentIndicator];
         [indicatorView setZaozaoCenter:CGPointMake(indicatorView.frame.size.width/2, 0)];

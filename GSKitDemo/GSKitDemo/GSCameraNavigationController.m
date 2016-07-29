@@ -1,29 +1,29 @@
 //
-//  GLCameraNavigationController.m
-//  GLKit
+//  GSCameraNavigationController.m
+//  GSKit
 //
 //  Created by OSU on 16/6/2.
 //  Copyright © 2016年 GarryLance. All rights reserved.
 //
 
-#import "GLCameraNavigationController.h"
-#import "GLCameraViewController.h"
+#import "GSCameraNavigationController.h"
+#import "GSCameraViewController.h"
 
 
 
-@interface GLCameraNavigationController ()
+@interface GSCameraNavigationController ()
 
 
 @end
 
 
 
-@implementation GLCameraNavigationController
+@implementation GSCameraNavigationController
 
 
 - (instancetype)init
 {
-    GLCameraViewController * vc = [[GLCameraViewController alloc] init];
+    GSCameraViewController * vc = [[GSCameraViewController alloc] init];
     self = [super initWithRootViewController:[vc autorelease]];
     if (self)
     {

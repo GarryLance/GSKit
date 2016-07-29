@@ -9,50 +9,12 @@
 #import "GSCameraManager.h"
 #import "GSDefine.h"
 
+
 typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 
 
-@interface GSCameraLayer()
-
-
-@property(assign,nonatomic) void(^blockForFrameChange)(CGRect frame);
-
-
-@end
-
-
-
 @implementation GSCameraLayer
-
-
-- (void)dealloc
-{
-    Block_release(_blockForFrameChange);
-    _blockForFrameChange = nil;
-    [super dealloc];
-}
-
-
-- (void)setFrame:(CGRect)frame
-{
-    [super setFrame:frame];
-    
-    if (_blockForFrameChange)
-    {
-        _blockForFrameChange(frame);
-    }
-}
-
-
-- (void)setBlockForFrameChange:(void (^)(CGRect))blockForFrameChange
-{
-    if (_blockForFrameChange)
-    {
-        Block_release(_blockForFrameChange);
-    }
-    _blockForFrameChange = Block_copy(blockForFrameChange);
-}
 
 
 @end
@@ -60,7 +22,9 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 
 @interface GSCameraManager () <AVCaptureVideoDataOutputSampleBufferDelegate>
-
+{
+    GSView * _viewPreview;
+}
 
 @property(retain,nonatomic) AVCaptureSession * captureSession;//控制输入输出对象的会话对象
 @property(retain,nonatomic) AVCaptureDeviceInput * captureDeviceInput;//输入对象
@@ -71,14 +35,12 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 @property(assign,nonatomic) dispatch_queue_t captureVideoDataQueue;
 
 @property(assign,nonatomic) GSCameraTakePhotoBlock takePhotoCompletionBlock;
-@property(assign,nonatomic) void(^blockForInterestPointEnd)();
 
 @end
 
 
 
 @implementation GSCameraManager
-
 
 - (void)dealloc
 {
@@ -88,6 +50,11 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     [_captureDeviceInput release];
     [_captureStillImageOutput release];
     [_captureVideoPreviewLayer release];
+    
+    [_viewPreview release];
+    [_imageForIntresetPoint release];
+    [_imageForFaceDetection release];
+    [_imageForQRCodeDetection release];
     [super dealloc];
 }
 
@@ -99,9 +66,9 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     {
         //会话
         self.captureSession = [[[AVCaptureSession alloc] init] autorelease];
-        if ([_captureSession canSetSessionPreset:AVCaptureSessionPresetHigh])
+        if ([_captureSession canSetSessionPreset:AVCaptureSessionPresetPhoto])
         {
-            _captureSession.sessionPreset = AVCaptureSessionPresetHigh;
+            _captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
         }
         
         //输入
@@ -150,9 +117,10 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         
         //预览
         self.captureVideoPreviewLayer = [AVCaptureVideoPreviewLayer layerWithSession:_captureSession];
-        _captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        _captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;//预览内容bounce格式
         
         _layerPreview = [[GSCameraLayer alloc] init];
+        _layerPreview.masksToBounds = YES;
         [_layerPreview addSublayer:_captureVideoPreviewLayer];
         BLOCKSELF
         _layerPreview.blockForFrameChange = ^(CGRect frame){
@@ -165,7 +133,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 }
 
 
-#pragma mark - Function
+#pragma mark  Function
 
 /**开始运行*/
 - (void)start
@@ -192,7 +160,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     AVCaptureConnection * connection = [self.captureStillImageOutput connectionWithMediaType:AVMediaTypeVideo];
     [_captureStillImageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
-       
+        
         NSData * data = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
         UIImage * image = [UIImage imageWithData:data];
         if (_takePhotoCompletionBlock)
@@ -268,17 +236,12 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 
 /**更改感兴趣的点*/
-- (void)changePointOfInterestInPreviewLayer:(CGPoint)point block:(void(^)())blockForPointOfInterestEnded
+- (void)changePointOfInterestInPreviewLayer:(CGPoint)point
 {
-    if (_blockForInterestPointEnd)
-    {
-        Block_release(_blockForInterestPointEnd);
-    }
-    _blockForInterestPointEnd = Block_copy(blockForPointOfInterestEnded);
-    
+    [self beginFocusAnimation:point];
     CGPoint scalarPoint = [self.captureVideoPreviewLayer captureDevicePointOfInterestForPoint:point];//获得图片相对点
     [self changeDeviceProperty:^(AVCaptureDevice *captureDevice) {
-       
+        
         //设定曝光点
         if ([captureDevice isExposurePointOfInterestSupported])
         {
@@ -303,13 +266,13 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 }
 
 
-#pragma mark - Observer
+#pragma mark  Observer
 
 /**为设备添加KVO*/
 - (void)addObserverForDevice:(AVCaptureDevice *)device
 {
     [device addObserver:self forKeyPath:@"adjustingFocus" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
-    [device addObserver:self forKeyPath:@"adjustingExposure" options:NSKeyValueObservingOptionNew context:nil];
+    [device addObserver:self forKeyPath:@"adjustingExposure" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
 }
 
 
@@ -326,29 +289,124 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 {
     if([keyPath isEqualToString:@"adjustingFocus"])
     {
-        BOOL old = [[change objectForKey:NSKeyValueChangeOldKey] boolValue];
         BOOL new = [[change objectForKey:NSKeyValueChangeNewKey] boolValue];
-        if (!old && new)
+        if ([self.delegate respondsToSelector:@selector(GSCameraManager:adjustingFocus:)])
         {
-            
+            [self.delegate GSCameraManager:self adjustingFocus:new];
         }
     }
-    if ([keyPath isEqualToString:@"adjustingFocus"] || [keyPath isEqualToString:@"adjustingExposure"])
+    else if([keyPath isEqualToString:@"adjustingExposure"])
     {
-        AVCaptureDevice * device = (AVCaptureDevice *)object;
-        if (!(device.adjustingFocus || device.adjustingExposure))
+        BOOL new = [[change objectForKey:NSKeyValueChangeNewKey] boolValue];
+        if ([self.delegate respondsToSelector:@selector(GSCameraManager:adjustingExposure:)])
         {
-            if (_blockForInterestPointEnd)
+            [self.delegate GSCameraManager:self adjustingExposure:new];
+        }
+    }
+}
+
+
+#pragma mark Extend
+
+/**懒加载预览视图*/
+- (GSView *)viewPreview
+{
+    if (!_viewPreview)
+    {
+        _viewPreview = [[GSView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_layerPreview.frame), CGRectGetHeight(_layerPreview.frame))];
+        BLOCKSELF
+        [_viewPreview setBlockForFrameChange:^(CGRect frame) {
+            
+            blockSelf.layerPreview.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+        }];
+        
+        //添加浏览层
+        [_viewPreview.layer addSublayer:_layerPreview];
+        
+        //添加单击手势
+        UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapViewPreview:)];
+        [_viewPreview addGestureRecognizer:tapGesture];
+        [tapGesture release];
+    }
+    return _viewPreview;
+}
+
+
+/**点击预览视图事件*/
+- (void)tapViewPreview:(UITapGestureRecognizer *)tap
+{
+    CGPoint point = [tap locationInView:tap.view];
+    [self changePointOfInterestInPreviewLayer:point];
+}
+
+
+- (void)beginFocusAnimation:(CGPoint)point
+{
+    if (_imageForIntresetPoint)
+    {
+        for (int i = 0 ; i < _layerPreview.sublayers.count; i++)
+        {
+            CALayer * layer = [_layerPreview.sublayers objectAtIndex:i];
+            if([layer.name isEqualToString:@"floatingLayer"])
             {
-                _blockForInterestPointEnd();
+                [layer removeFromSuperlayer];
+                break;
+            }
+        }
+        CALayer * layerFloating = [[CALayer alloc] init];
+        layerFloating.name = @"floatingLayer";
+        layerFloating.frame = CGRectMake(0, 0, 80, 80);
+        layerFloating.contents = (id)self.imageForIntresetPoint.CGImage;
+        layerFloating.position = point;
+        [_layerPreview addSublayer:layerFloating];
+        [layerFloating release];
+        
+        CABasicAnimation * animationScale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        animationScale.fromValue = @1.3;
+        animationScale.toValue = @1;
+        animationScale.duration = 0.25;
+        
+        CABasicAnimation * animationScale2 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        animationScale2.beginTime = 0.25;
+        animationScale2.fromValue = @1;
+        animationScale2.toValue = @1;
+        animationScale2.duration = 0.25;
+        
+        CABasicAnimation * animationOpacity = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        animationOpacity.beginTime = 0.5;
+        animationOpacity.fromValue = @1;
+        animationOpacity.toValue  = @0;
+        animationOpacity.duration = 0.25;
+        
+        CAAnimationGroup * animationGroup = [[CAAnimationGroup alloc] init];
+        animationGroup.delegate = self;
+        animationGroup.animations = @[animationScale,animationScale2,animationOpacity];
+        animationGroup.duration = 0.75;
+        animationGroup.fillMode = kCAFillModeForwards;
+        animationGroup.removedOnCompletion = NO;
+        [layerFloating addAnimation:animationGroup forKey:@"focusAnimation"];
+    }
+}
+
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (flag)
+    {
+        for (int i = 0 ; i < _layerPreview.sublayers.count; i++)
+        {
+            CALayer * layer = [_layerPreview.sublayers objectAtIndex:i];
+            if([layer.name isEqualToString:@"floatingLayer"])
+            {
+                [layer removeFromSuperlayer];
+                break;
             }
         }
     }
 }
 
 
-
-#pragma mark - Tools
+#pragma mark  Tools
 
 
 /**获取对应位置的摄像头*/

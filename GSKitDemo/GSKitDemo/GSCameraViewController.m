@@ -1,17 +1,17 @@
 //
-//  GLCameraViewController.m
-//  GLKit
+//  GSCameraViewController.m
+//  GSKit
 //
 //  Created by OSU on 16/5/31.
 //  Copyright © 2016年 GarryLance. All rights reserved.
 //
 
-#import "GLCameraViewController.h"
-#import "GLEditPhotoViewController.h"
+#import "GSCameraViewController.h"
+#import "GSEditPhotoViewController.h"
 #import "GSKit.h"
 
 
-@interface GLCameraViewController ()
+@interface GSCameraViewController ()
 
 @property(retain,nonatomic) GSCameraManager * manager;
 
@@ -23,7 +23,7 @@
 
 
 
-@implementation GLCameraViewController
+@implementation GSCameraViewController
 
 
 - (void)dealloc
@@ -45,7 +45,7 @@
     
     [self setupView];
     
-    [self setupManager];
+    [_manager start];
 }
 
 
@@ -70,7 +70,6 @@
     [super viewDidDisappear:animated];
     
     [_manager stop];
-//    [_viewForPreview stopLoading];
 }
 
 
@@ -82,20 +81,22 @@
 
 - (void)setupManager
 {
-    self.manager = [[[GSCameraManager alloc] init] autorelease];
-    
-    _manager.layerPreview.frame = _viewForPreview.bounds;
-    [_viewForPreview.layer insertSublayer:_manager.layerPreview atIndex:0];
     [_manager start];
 }
 
 
 - (void)setupView
 {
-    UIView * viewForPreview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width)];
-    [self.view addSubview:viewForPreview];
-    self.viewForPreview = [viewForPreview autorelease];
+    self.manager = [[[GSCameraManager alloc] init] autorelease];
     
+    self.manager.imageForIntresetPoint = [[UIImage imageNamed:@"focus"] resizableImageWithCapInsets:UIEdgeInsetsMake(30, 30, 30, 30) resizingMode:UIImageResizingModeStretch];
+    
+    self.manager.viewPreview.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+    UIView * viewForPreview = self.manager.viewPreview;
+    [self.view addSubview:viewForPreview];
+    self.viewForPreview = viewForPreview;
+    
+    //九宫格视图
     UIView * viewSudoko = [[UIView alloc] initWithFrame:viewForPreview.bounds];
     [viewSudoko.layer addSublayer:[self layerWithFrame:CGRectMake(CGRectGetWidth(viewSudoko.frame)/3.0-0.5, 0, 1, viewSudoko.frame.size.height)]];
     [viewSudoko.layer addSublayer:[self layerWithFrame:CGRectMake(CGRectGetWidth(viewSudoko.frame)/3.0*2-0.5, 0, 1, viewSudoko.frame.size.height)]];
@@ -130,24 +131,7 @@
     btnFlash.center = CGPointMake(CGRectGetWidth(self.view.frame)/2.8*2, CGRectGetMaxY(_viewForPreview.frame)+CGRectGetHeight(btnFlash.frame)+17);
     [self.view addSubview:btnFlash];
     [btnFlash addTarget:self action:@selector(changeFlashMode:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapViewPreview:)];
-    [_viewForPreview addGestureRecognizer:tap];
-    [tap release];
 }
-
-
-#pragma mark 更改对焦点
-
-- (void)tapViewPreview:(UITapGestureRecognizer *)tap
-{
-    CGPoint point = [tap locationInView:tap.view];
-    [_manager changePointOfInterestInPreviewLayer:point block:^{
-        
-        NSLog(@"complete");
-    }];
-}
-
 
 
 #pragma mark 拍照
@@ -155,8 +139,6 @@
 - (void)takePhoto:(id)sender
 {
     self.view.userInteractionEnabled = NO;
-//    [_viewForPreview startLoading];
-//    [_viewForPreview.viewIndicator viewWithTag:INDICATOR_TAG].backgroundColor = [UIColor clearColor];
     
     __block typeof(self) _self = self;
     [_manager takePhotoBlock:^(UIImage *image) {
@@ -168,7 +150,7 @@
 
 - (void)showImage:(UIImage *)image
 {
-    GLEditPhotoViewController * vc = [[GLEditPhotoViewController alloc] init];
+    GSEditPhotoViewController * vc = [[GSEditPhotoViewController alloc] init];
     vc.image = image;
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
