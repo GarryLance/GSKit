@@ -116,7 +116,7 @@
     
     UIButton * btnSudoko = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage * imageSudoku = [UIImage imageNamed:@"camera_9_on"];
-    [btnSudoko setImage:[imageSudoku coverTintColor:[UIColor colorWithRed:244/255.0 green:242/255.0 blue:216/255.0 alpha:1]] forState:UIControlStateNormal];
+    [btnSudoko setImage:[imageSudoku gs_coverTintColor:[UIColor colorWithRed:244/255.0 green:242/255.0 blue:216/255.0 alpha:1]] forState:UIControlStateNormal];
     [btnSudoko setImage:imageSudoku forState:UIControlStateSelected];
     btnSudoko.frame = CGRectMake(0, 0, imageSudoku.size.width, imageSudoku.size.height);
     btnSudoko.center = CGPointMake(CGRectGetWidth(self.view.frame)/3.0, CGRectGetMaxY(_viewForPreview.frame)+CGRectGetHeight(btnSudoko.frame)+17);

@@ -235,7 +235,6 @@
         
         //获取属性值
         id value = [self valueForKey:propertyName];
-        if (!value) continue;
         
         //属性是否子类
         BOOL isModelBaseClass = NO;

@@ -14,7 +14,7 @@
 #import "GSCalendar.h"
 #import "GSPlayer.h"
 #import "UIView+GSLoading.h"
-#import "UIImage+GSTint.h"
+#import "UIImage+GSCategory.h"
 #import "UIButton+GSBlock.h"
 #import "GSTool.h"
 #import "GSLayer.h"

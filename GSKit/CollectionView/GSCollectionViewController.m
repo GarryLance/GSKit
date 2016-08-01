@@ -47,16 +47,16 @@
         static NSString * const reuseIdentifier = @"GSCollectionViewCell";
         
         //默认的安装方式
-        [self     itemClass:[GSCollectionViewItem class]
-            reuseIdentifier:reuseIdentifier
-          sectionModelClass:[GSCollectionViewSectionModel class]
-             itemModelClass:[GSCollectionViewItemModel class]];
+        [self     registerItemClass:[GSCollectionViewItem class]
+                    reuseIdentifier:reuseIdentifier
+                  sectionModelClass:[GSCollectionViewSectionModel class]
+                     itemModelClass:[GSCollectionViewItemModel class]];
     }
     return self;
 }
 
 
-- (void)itemClass:(Class)itemClass reuseIdentifier:(NSString *)reuseIdentifier sectionModelClass:(Class)sectionModelClass itemModelClass:(Class)itemModelClass
+- (void)registerItemClass:(Class)itemClass reuseIdentifier:(NSString *)reuseIdentifier sectionModelClass:(Class)sectionModelClass itemModelClass:(Class)itemModelClass
 {
     _gs_itemCalss = itemClass;
     _gs_reuseIdentifier = reuseIdentifier;
@@ -97,6 +97,8 @@
     
     _gs_sectionModels = [sectionModels copy];
     _gs_itemsSectionDict = [itemsSectionDict copy];
+    
+    [self.collectionView reloadData];
 }
 
 

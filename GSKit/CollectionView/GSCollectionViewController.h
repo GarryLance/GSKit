@@ -53,10 +53,10 @@
  @param sectionModelClass section对应的模型类型，应为GSCollectionViewSectionModel的子类
  @param itemModelClass    item对应的模型类型，应为GSCollectionViewItemModel的子类
  */
-- (void)itemClass:(Class)itemClass
-  reuseIdentifier:(NSString *)reuseIdentifier
-sectionModelClass:(Class)sectionModelClass
-   itemModelClass:(Class)itemModelClass;
+- (void)registerItemClass:(Class)itemClass
+          reuseIdentifier:(NSString *)reuseIdentifier
+        sectionModelClass:(Class)sectionModelClass
+           itemModelClass:(Class)itemModelClass;
 
 
 /**
