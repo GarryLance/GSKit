@@ -161,7 +161,11 @@ static char   LoadingViewIndicator;
 {
     [(UIActivityIndicatorView*)[self.viewIndicator viewWithTag:INDICATOR_TAG] stopAnimating];
     CAShapeLayer * progressLayer = [self setupLoadingProcessView];
+    
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
     progressLayer.strokeEnd = percentDone*0.01;
+    [CATransaction commit];
 }
 
 

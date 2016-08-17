@@ -34,7 +34,10 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 @property(assign,nonatomic) dispatch_queue_t captureVideoDataQueue;
 
-@property(assign,nonatomic) GSCameraTakePhotoBlock takePhotoCompletionBlock;
+@property(copy, nonatomic) GSCameraTakePhotoBlock takePhotoCompletionBlock;
+@property(copy, nonatomic) GSCameraTakePhotoShutterBlock takePhotoShutterBlock;
+
+@property(retain,nonatomic) NSError * cameraError;//摄像头错误信息
 
 @end
 
@@ -45,11 +48,17 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 - (void)dealloc
 {
     [self removeObserverFromDevice:_captureDeviceInput.device];
+    Block_release(_takePhotoCompletionBlock);
+    _takePhotoCompletionBlock = nil;
+    Block_release(_takePhotoShutterBlock);
+    _takePhotoShutterBlock = nil;
+    
     [_layerPreview release];
     [_captureSession release];
     [_captureDeviceInput release];
     [_captureStillImageOutput release];
     [_captureVideoPreviewLayer release];
+    [_cameraError release];
     
     [_viewPreview release];
     [_imageForIntresetPoint release];
@@ -75,6 +84,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         AVCaptureDevice * backCamera = [self cameraDevicePosition:AVCaptureDevicePositionBack];
         NSError * error = nil;
         self.captureDeviceInput = [[[AVCaptureDeviceInput alloc] initWithDevice:backCamera error:&error] autorelease];
+        self.cameraError = error;
         if (error)
         {
             GSDDLog(@"%@",error.localizedDescription);
@@ -150,22 +160,38 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 
 /**拍照*/
-- (void)takePhotoBlock:(GSCameraTakePhotoBlock)block
+- (void)takePhotoBlock:(GSCameraTakePhotoBlock)block shutterBlock:(GSCameraTakePhotoShutterBlock)shutterBlock
 {
-    if (_takePhotoCompletionBlock)
+    if (_cameraError)
     {
-        Block_release(_takePhotoCompletionBlock);
+        //摄像头有问题则直接结束
+        return;
     }
-    _takePhotoCompletionBlock = Block_copy(block);
     
+    self.takePhotoCompletionBlock = block;
+    self.takePhotoShutterBlock = shutterBlock;
+    
+    //快门动画时机回调
+    if (!_captureDeviceInput.device.adjustingFocus)
+    {
+        if (self.takePhotoShutterBlock)
+        {
+            self.takePhotoShutterBlock();
+            _takePhotoShutterBlock = nil;
+        }
+    }
+    
+    BLOCKSELF
     AVCaptureConnection * connection = [self.captureStillImageOutput connectionWithMediaType:AVMediaTypeVideo];
     [_captureStillImageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
         
+        [blockSelf stop];
         NSData * data = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
         UIImage * image = [UIImage imageWithData:data];
-        if (_takePhotoCompletionBlock)
+        //完成回调
+        if (blockSelf.takePhotoCompletionBlock)
         {
-            _takePhotoCompletionBlock(image);
+            blockSelf.takePhotoCompletionBlock(image);
         }
     }];
 }
@@ -211,9 +237,11 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     AVCaptureDevice * camera =[self cameraDevicePosition:position];
     NSError * error = nil;
     AVCaptureDeviceInput * captureDeviceInput = [[[AVCaptureDeviceInput alloc] initWithDevice:camera error:&error] autorelease];
+    self.cameraError = error;
     if (error)
     {
         GSDDLog(@"%@",error.localizedDescription);
+        return NO;
     }
     
     [self removeObserverFromDevice:elderCamera];
@@ -293,6 +321,14 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         if ([self.delegate respondsToSelector:@selector(GSCameraManager:adjustingFocus:)])
         {
             [self.delegate GSCameraManager:self adjustingFocus:new];
+        }
+        if (!new)
+        {
+            if (self.takePhotoShutterBlock)
+            {
+                self.takePhotoShutterBlock();
+                _takePhotoShutterBlock = nil;
+            }
         }
     }
     else if([keyPath isEqualToString:@"adjustingExposure"])
@@ -430,17 +466,15 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     AVCaptureDevice *captureDevice= [self.captureDeviceInput device];
     NSError *error;
     //注意改变设备属性前一定要首先调用lockForConfiguration:调用完之后使用unlockForConfiguration方法解锁
-    if ([captureDevice lockForConfiguration:&error])
+    [captureDevice lockForConfiguration:&error];
+    if (error)
     {
-        propertyChange(captureDevice);
-        [captureDevice unlockForConfiguration];
-        return YES;
-    }
-    else
-    {
-        NSLog(@"设置设备属性过程发生错误，错误信息：%@",error.localizedDescription);
+        NSLog(@"设置设备属性过程发生错误");
         return NO;
     }
+    propertyChange(captureDevice);
+    [captureDevice unlockForConfiguration];
+    return YES;
 }
 
 

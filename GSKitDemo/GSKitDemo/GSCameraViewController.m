@@ -142,9 +142,9 @@
     
     __block typeof(self) _self = self;
     [_manager takePhotoBlock:^(UIImage *image) {
-       
+        
         [_self showImage:image];
-    }];
+    } shutterBlock:nil];
 }
 
 

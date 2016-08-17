@@ -11,4 +11,9 @@
 
 @implementation CALayer (GSCategory)
 
+- (void)gs_addLine
+{
+    
+}
+
 @end

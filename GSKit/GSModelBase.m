@@ -115,7 +115,8 @@
         [self traversePropertyBlock:^(int index, NSString *propertyName, NSString *propertyType, BOOL isModelBaseClass, id value) {
             
             id objectValue = [object valueForKey:propertyName];
-            if (![value isEqual:objectValue])
+            if (![value isEqual:objectValue]
+                && !(!value && !objectValue))//排除两者都为nil的情况
             {
                 _isEqual = NO;
             }

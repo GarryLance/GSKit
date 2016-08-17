@@ -9,6 +9,17 @@
 #import "GSCollectionViewController.h"
 #import "GSDefine.h"
 
+@implementation GSCollectionDataModel
+
+- (void)dealloc
+{
+    [_gs_sectionModels release];
+    [_gs_itemsSectionDict release];
+    [super dealloc];
+}
+
+@end
+
 
 
 @interface GSCollectionViewController ()
@@ -19,6 +30,7 @@
 @property (assign, nonatomic) Class gs_sectionModelClass;
 @property (assign, nonatomic) Class gs_itemModelClass;
 
+@property (retain, nonatomic) NSMutableDictionary * gs_itemFirstLoadBlockDict;//object为回调block, key为sectionModel
 @property (retain, nonatomic) NSMutableDictionary * gs_itemWillSetupBlockDict;//object为回调block, key为sectionModel
 @property (retain, nonatomic) NSMutableDictionary * gs_itemDidSetupBlockDict;//object为回调block, key为sectionModel
 
@@ -28,8 +40,7 @@
 
 @implementation GSCollectionViewController
 
-
-#pragma mark API
+#pragma mark Base
 
 - (instancetype)initWithCommonLayoutWithItemSize:(CGSize)itemSize lineSpacing:(CGFloat)lineSpacing itemSpacing:(CGFloat)itemSpacing sectionInset:(UIEdgeInsets)sectionInset scrollDirection:(UICollectionViewScrollDirection)scrollDirection
 {
@@ -44,6 +55,8 @@
     [layout autorelease];
     if (self)
     {
+        self.gs_dataModels = [NSMutableDictionary dictionary];
+        
         static NSString * const reuseIdentifier = @"GSCollectionViewCell";
         
         //默认的安装方式
@@ -65,6 +78,8 @@
 }
 
 
+#pragma mark Data
+
 - (void)numberOfSections:(NSInteger)sectionCount numberOfItems:(NSInteger(^)(NSInteger section))itemsCountBlock modelsForSection:(void(^)(__kindof GSCollectionViewSectionModel * sectionModel, NSInteger section))sectionModelBlock modelsForItem:(void(^)(__kindof GSCollectionViewItemModel * itemModel, NSIndexPath * indexPath))itemModelBlock
 {
     NSMutableArray * sectionModels = [NSMutableArray arrayWithCapacity:sectionCount];
@@ -72,7 +87,7 @@
     
     for (int i = 0; i < sectionCount; i++)
     {
-        GSDLog(@"section:%d",i)
+//        GSDLog(@"section:%d",i)
         id sectionModel = [[_gs_sectionModelClass alloc] init];
         [sectionModels addObject:sectionModel];
         [sectionModel release];
@@ -84,7 +99,7 @@
         NSMutableArray * itemModels = [NSMutableArray arrayWithCapacity:itemCount];
         for (int j = 0; j < itemCount; j++)
         {
-            GSDLog(@"item:%d",j)
+//            GSDLog(@"item:%d",j)
             id itemModel = [[_gs_itemModelClass alloc] init];
             [itemModels addObject:itemModel];
             [itemModel release];
@@ -95,19 +110,54 @@
         [itemsSectionDict setObject:itemModels forKey:sectionModel];
     }
     
-    _gs_sectionModels = [sectionModels copy];
-    _gs_itemsSectionDict = [itemsSectionDict copy];
-    
+    GSCollectionDataModel * dataModel = [[GSCollectionDataModel alloc] init];
+    dataModel.gs_sectionModels = sectionModels;
+    dataModel.gs_itemsSectionDict = itemsSectionDict;
+    self.gs_dataModel = [dataModel autorelease];
+}
+
+
+- (void)reloadCollectionView
+{
+    [self.collectionView setContentOffset:CGPointZero animated:NO];
     [self.collectionView reloadData];
 }
 
 
-- (void)blockFotItemSection:(GSCollectionViewSectionModel *)sectionModel itemWillSetupBlock:(GSItemWillSetupDataBlock)willSetupBlock itemDidSetupBlock:(GSItemDidSetupDataBlock)didSetupBlock
+- (void)saveModelsTag:(NSString *)tag
 {
+    _gs_dataTag = tag;
+    [_gs_dataModels setObject:self.gs_dataModel forKey:tag];
+}
+
+
+- (GSCollectionDataModel *)loadModelsTag:(NSString *)tag
+{
+    _gs_dataTag = tag;
+    GSCollectionDataModel * dataModel = [_gs_dataModels objectForKey:tag];
+    self.gs_dataModel = dataModel;
+    return dataModel;
+}
+
+
+#pragma mark Action
+
+- (void)blockForItemSection:(GSCollectionViewSectionModel *)sectionModel itemFirstLoadBlock:(GSItemFirstLoadBlock)firtLoadBlock itemWillSetupBlock:(GSItemWillSetupDataBlock)willSetupBlock itemDidSetupBlock:(GSItemDidSetupDataBlock)didSetupBlock
+{
+    //存储firstLoadBlock
+    if (!_gs_itemFirstLoadBlockDict)
+    {
+        self.gs_itemFirstLoadBlockDict = [NSMutableDictionary dictionaryWithCapacity:_gs_dataModel.gs_sectionModels.count];
+    }
+    if (firtLoadBlock)
+    {
+        [_gs_itemFirstLoadBlockDict setObject:firtLoadBlock forKey:sectionModel];
+    }
+    
     //存储willSetupBlock
     if (!_gs_itemWillSetupBlockDict)
     {
-        self.gs_itemWillSetupBlockDict = [NSMutableDictionary dictionaryWithCapacity:_gs_sectionModels.count];
+        self.gs_itemWillSetupBlockDict = [NSMutableDictionary dictionaryWithCapacity:_gs_dataModel.gs_sectionModels.count];
     }
     if (willSetupBlock)
     {
@@ -117,7 +167,7 @@
     //存储didSetupBlock
     if (!_gs_itemDidSetupBlockDict)
     {
-        self.gs_itemDidSetupBlockDict = [NSMutableDictionary dictionaryWithCapacity:_gs_sectionModels.count];
+        self.gs_itemDidSetupBlockDict = [NSMutableDictionary dictionaryWithCapacity:_gs_dataModel.gs_sectionModels.count];
     }
     if (didSetupBlock)
     {
@@ -131,8 +181,9 @@
 - (void)dealloc
 {
     [_gs_didSelectCollectionViewItemBlock release];
-    [_gs_sectionModels release];
-    [_gs_itemsSectionDict release];
+    [_gs_dataModel release];
+    [_gs_dataModels release];
+    [_gs_itemFirstLoadBlockDict release];
     [_gs_itemWillSetupBlockDict release];
     [_gs_itemDidSetupBlockDict release];
     [super dealloc];
@@ -159,7 +210,7 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return _gs_sectionModels.count;
+    return _gs_dataModel.gs_sectionModels.count;
 }
 
 
@@ -167,10 +218,10 @@
 {
     NSInteger count = 0;
     //获取sectionModel
-    GSCollectionViewSectionModel * sectionModel = [_gs_sectionModels objectAtIndex:section];
+    GSCollectionViewSectionModel * sectionModel = [_gs_dataModel.gs_sectionModels objectAtIndex:section];
     if (sectionModel)
     {
-        count = [_gs_itemsSectionDict objectForKey:sectionModel].count;
+        count = [_gs_dataModel.gs_itemsSectionDict objectForKey:sectionModel].count;
     }
     return count;
 }
@@ -181,9 +232,14 @@
     GSCollectionViewItem * cell = [collectionView dequeueReusableCellWithReuseIdentifier:_gs_reuseIdentifier forIndexPath:indexPath];
     
     //获取sectionModel
-    GSCollectionViewSectionModel * sectionModel = [_gs_sectionModels objectAtIndex:indexPath.section];
+    GSCollectionViewSectionModel * sectionModel = [_gs_dataModel.gs_sectionModels objectAtIndex:indexPath.section];
     
     //设置回调
+    if (_gs_itemFirstLoadBlockDict)
+    {
+        //设置item首次加载的回调
+        cell.gs_itemFirstLoadBlock = [_gs_itemFirstLoadBlockDict objectForKey:sectionModel];
+    }
     if (_gs_itemWillSetupBlockDict)
     {
         //设置item即将安装数据的回调
@@ -196,7 +252,7 @@
     }
     
     //设置model
-    cell.gs_model = [[_gs_itemsSectionDict objectForKey:sectionModel] objectAtIndex:indexPath.item];
+    cell.gs_model = [[_gs_dataModel.gs_itemsSectionDict objectForKey:sectionModel] objectAtIndex:indexPath.item];
 
     return cell;
 }
@@ -222,7 +278,8 @@
     if (_gs_didSelectCollectionViewItemBlock)
     {
         UICollectionViewCell * item = [collectionView cellForItemAtIndexPath:indexPath];
-        _gs_didSelectCollectionViewItemBlock(self, (GSCollectionViewItem *)item, [[_gs_itemsSectionDict objectForKey:[_gs_sectionModels objectAtIndex:indexPath.section]] objectAtIndex:indexPath.item]);
+        GSCollectionViewItemModel * itemModel = [[_gs_dataModel.gs_itemsSectionDict objectForKey:[_gs_dataModel.gs_sectionModels objectAtIndex:indexPath.section]] objectAtIndex:indexPath.item];
+        _gs_didSelectCollectionViewItemBlock(self, (GSCollectionViewItem *)item, itemModel, indexPath);
     }
 }
 

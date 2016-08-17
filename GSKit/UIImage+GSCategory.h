@@ -16,13 +16,16 @@
 /**覆盖一层颜色，保留灰度*/
 - (UIImage *)gs_coverColorKeepGrey:(UIColor *)tintColor;
 
-//视图截图
-+ (UIImage *)gs_imageWithView:(UIView*)view specifySize:(NSValue*)specifySize;
+/**生成毛玻璃图片*/
+- (UIImage *)gs_applyBlurRadius:(CGFloat)radius;
 
-//生成毛玻璃图片
-+ (UIImage *)gs_applyBlurRadius:(CGFloat)radius toImage:(UIImage *)image;
+/**获取截图*/
+- (UIImage *)gs_croppingInset:(UIEdgeInsets)inset;
 
 /**获取缩略图*/
-+ (UIImage *)gs_getThumImage:(UIImage *)image size:(CGSize)size;
+- (UIImage *)gs_thumSize:(CGSize)size;
+
+/**UIView截图*/
++ (UIImage *)gs_imageWithView:(UIView*)view specifySize:(NSValue*)specifySize;
 
 @end

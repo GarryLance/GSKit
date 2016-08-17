@@ -116,24 +116,24 @@
     }];
     
     //安装item
-    for (GSCollectionViewSectionModel * sectionModel in vc.gs_sectionModels)
+    for (GSCollectionViewSectionModel * sectionModel in vc.gs_dataModel.gs_sectionModels)
     {
-        [vc blockFotItemSection:sectionModel
+        [vc blockForItemSection:sectionModel
+             itemFirstLoadBlock:nil
              itemWillSetupBlock:^BOOL(__kindof GSCollectionViewItem *item, __kindof GSCollectionViewItemModel *model) {
                  
                  item.gs_imageView.backgroundColor = [UIColor whiteColor];
                  item.gs_itemType = GSCollectionItemTypeDetatched;
                  return YES;
-                 
              } itemDidSetupBlock:nil];
     }
     
     //安装action
-    [vc setGs_didSelectCollectionViewItemBlock:^(GSCollectionViewController * vc, __kindof GSCollectionViewItem * item, __kindof GSCollectionViewItemModel * itemModel) {
+    [vc setGs_didSelectCollectionViewItemBlock:^(GSCollectionViewController * vc, __kindof GSCollectionViewItem * item, __kindof GSCollectionViewItemModel * itemModel, NSIndexPath * indexPath) {
         
         GSDLog(@"%@",itemModel);
     }];
-    
+
     vc.view.frame = CGRectMake(0, CGRectGetMaxY(_imageView.frame), GSSCREEN_WIDTH, 115+20+20+44);
     vc.collectionView.backgroundColor = [UIColor clearColor];
     vc.collectionView.showsHorizontalScrollIndicator = NO;

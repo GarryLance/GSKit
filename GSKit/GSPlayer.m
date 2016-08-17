@@ -1144,6 +1144,12 @@ typedef NS_ENUM(NSInteger,GSPanGestureDirection)
     [self.player pause];
     
     CMTime duration = self.player.player.currentItem.duration;
+    if (!duration.value)
+    {
+        GSDDLog(@"视频时间为零，可能尚未成功加载视频，无法跳转进度条。");
+        return;
+    }
+
     BLOCKSELF
     [self retain];
     [self.player.player.currentItem seekToTime:CMTimeMake(duration.value * value, duration.timescale) completionHandler:^(BOOL finished) {

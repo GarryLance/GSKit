@@ -13,6 +13,17 @@
 #import "GSCollectionViewItem.h"
 
 
+@interface GSCollectionDataModel  : GSModelBase
+
+/**section的模型数组*/
+@property (copy, nonatomic) NSArray <GSCollectionViewSectionModel *> * gs_sectionModels;
+
+/**item的字典，keyArray与sectionModels一一对应，排序由sectionModels决定*/
+@property (copy, nonatomic) NSDictionary <GSCollectionViewSectionModel *, NSArray <GSCollectionViewItemModel *> *> * gs_itemsSectionDict;
+
+@end
+
+
 
 @protocol GSCollectionViewControllerDelegate;
 
@@ -20,16 +31,9 @@
 
 @interface GSCollectionViewController : UICollectionViewController
 
+#pragma mark Base
+
 @property (assign, nonatomic) id <GSCollectionViewControllerDelegate> gs_delegate;
-
-/**section的模型数组*/
-@property (copy, nonatomic, readonly) NSArray <GSCollectionViewSectionModel *> * gs_sectionModels;
-
-/**item的字典，keyArray与sectionModels一一对应，排序由sectionModels决定*/
-@property (copy, nonatomic, readonly) NSDictionary <GSCollectionViewSectionModel *, NSArray <GSCollectionViewItemModel *> *> * gs_itemsSectionDict;
-
-/**选中item回调*/
-@property (assign, nonatomic) void(^gs_didSelectCollectionViewItemBlock)(GSCollectionViewController * vc, __kindof GSCollectionViewItem * item, __kindof GSCollectionViewItemModel * itemModel);
 
 
 /**
@@ -59,6 +63,14 @@
            itemModelClass:(Class)itemModelClass;
 
 
+#pragma mark Data
+
+/**管理数据的dataModel*/
+@property (retain, nonatomic) GSCollectionDataModel * gs_dataModel;
+
+/**dataModel对应的tag*/
+@property (copy, nonatomic, readonly) NSString * gs_dataTag;
+
 /**
  安装数据模型
  @param sectionCount      设置section数量。
@@ -71,17 +83,35 @@
         modelsForSection:(void(^)(__kindof GSCollectionViewSectionModel * sectionModel, NSInteger section))sectionModelBlock
            modelsForItem:(void(^)(__kindof GSCollectionViewItemModel * itemModel, NSIndexPath * indexPath))itemModelBlock;
 
+/***/
+@property (retain, nonatomic) NSMutableDictionary <NSString *, GSCollectionDataModel * > * gs_dataModels;
+
+/**保存当前dataModel*/
+- (void)saveModelsTag:(NSString *)tag;
+
+/**读取指定dataModel*/
+- (GSCollectionDataModel *)loadModelsTag:(NSString *)tag;
+
+/**重新加载collectionView*/
+- (void)reloadCollectionView;
+
+
+#pragma mark Action
 
 /**
  安装item事件回调
  @param sectionModel   item对应的sectionModel
+ @param firstLoadBlock 一个item首次加载的回调
  @param willSetupBlock 一个item即将开始安装的回调
  @param didSetupBlock  一个item完成安装的回调
  */
-- (void)blockFotItemSection:(GSCollectionViewSectionModel *)sectionModel
+- (void)blockForItemSection:(GSCollectionViewSectionModel *)sectionModel
+         itemFirstLoadBlock:(GSItemFirstLoadBlock)firtLoadBlock
          itemWillSetupBlock:(GSItemWillSetupDataBlock)willSetupBlock
           itemDidSetupBlock:(GSItemDidSetupDataBlock)didSetupBlock;
 
+/**选中item回调*/
+@property (copy, nonatomic) void(^gs_didSelectCollectionViewItemBlock)(GSCollectionViewController * vc, __kindof GSCollectionViewItem * item, __kindof GSCollectionViewItemModel * itemModel, NSIndexPath * indexPath);
 
 
 @end

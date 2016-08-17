@@ -14,18 +14,22 @@ typedef NS_ENUM(NSInteger,GSCollectionItemType)
 {
     /**没有样式*/
     GSCollectionItemTypeNone,
+    /**只有图片*/
+    GSCollectionItemTypeImageOnly,
     /**文字与图片分离*/
     GSCollectionItemTypeDetatched,
 };
 
 @class GSCollectionViewItem;
 
+typedef void(^GSItemFirstLoadBlock)(__kindof GSCollectionViewItem * item);
 typedef BOOL(^GSItemWillSetupDataBlock)(__kindof GSCollectionViewItem * item, __kindof GSCollectionViewItemModel * model);
 typedef void(^GSItemDidSetupDataBlock)(__kindof GSCollectionViewItem * item, __kindof GSCollectionViewItemModel * model);
 
 
 @interface GSCollectionViewItem : UICollectionViewCell
 
+@property (assign, nonatomic) BOOL isFirstLoaded;
 @property (retain, nonatomic) UIImageView * gs_imageView;
 @property (retain, nonatomic) UILabel * gs_titleLabel;
 
@@ -34,6 +38,12 @@ typedef void(^GSItemDidSetupDataBlock)(__kindof GSCollectionViewItem * item, __k
 
 /**数据模型*/
 @property (retain, nonatomic) GSCollectionViewItemModel * gs_model;
+
+/**
+ item首次加载回调
+ @param  item  首次加载的item
+ */
+@property (assign, nonatomic) GSItemFirstLoadBlock gs_itemFirstLoadBlock;
 
 /**
  item即将安装数据的回调

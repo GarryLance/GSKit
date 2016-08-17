@@ -10,4 +10,6 @@
 
 @interface CALayer (GSCategory)
 
+- (void)gs_addLine;
+
 @end

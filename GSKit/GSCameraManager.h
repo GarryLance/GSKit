@@ -12,8 +12,10 @@
 #import "GSView.h"
 
 
-//拍照回调block声明
+//拍照回调
 typedef void(^GSCameraTakePhotoBlock)(UIImage * image);
+//拍照时快门动画的设置回调
+typedef void(^GSCameraTakePhotoShutterBlock)();
 
 
 
@@ -47,7 +49,7 @@ typedef void(^GSCameraTakePhotoBlock)(UIImage * image);
 - (void)stop;
 
 /**拍照*/
-- (void)takePhotoBlock:(GSCameraTakePhotoBlock)block;
+- (void)takePhotoBlock:(GSCameraTakePhotoBlock)block shutterBlock:(GSCameraTakePhotoShutterBlock)shutterBlock;
 
 /**设置闪光灯*/
 - (BOOL)changeFlashMode:(AVCaptureFlashMode)flashMode;

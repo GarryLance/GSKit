@@ -24,5 +24,6 @@
 #import "CALayer+GSCategory.h"
 #import "GSCameraManager.h"
 #import "GSShapeSlider.h"
+#import "GSCollectionViewController.h"
 
 #endif /* GSKit_h */

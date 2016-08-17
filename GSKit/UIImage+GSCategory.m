@@ -50,28 +50,13 @@
 }
 
 
-/**UIView截图*/
-+ (UIImage *)gs_imageWithView:(UIView*)view specifySize:(NSValue*)specifySize
-{
-    //支持retina高分的关键
-    CGSize size = specifySize ? [specifySize CGSizeValue] : view.frame.size;
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [view.layer renderInContext:context];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
-}
-
-
 /**生成毛玻璃图片*/
-+(UIImage *)gs_applyBlurRadius:(CGFloat)radius toImage:(UIImage *)image
+- (UIImage *)gs_applyBlurRadius:(CGFloat)radius
 {
     if (radius < 0) radius = 0;
     
     CIContext *context =  [CIContext contextWithOptions:nil];
-    CIImage *inputImage = [CIImage imageWithCGImage:image.CGImage];
+    CIImage *inputImage = [CIImage imageWithCGImage:self.CGImage];
     
     // Setting up gaussian blur
     CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
@@ -87,40 +72,62 @@
 }
 
 
-/**获取缩略图*/
-+ (UIImage *)gs_getThumImage:(UIImage *)image size:(CGSize)size
+/**获取截图*/
+- (UIImage *)gs_croppingInset:(UIEdgeInsets)inset
 {
-    if (image)
+    CGSize newSize = CGSizeMake(self.size.width-(inset.left+inset.right), self.size.height-(inset.top+inset.bottom));
+    UIGraphicsBeginImageContext(newSize);
+    [self drawInRect:CGRectMake(-inset.left, -inset.top, self.size.width, self.size.height)];
+    UIImage *imageTag = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return imageTag;
+}
+
+
+/**获取缩略图，size设置为view的size大小即可*/
+- (UIImage *)gs_thumSize:(CGSize)size
+{
+    //@2x与@3x的判断，根据屏幕获取是否为i6p
+    NSInteger rate = 2;
+    if ([UIScreen mainScreen].bounds.size.height > 667)
     {
-        //@2x与@3x的判断，根据屏幕获取是否为i6p
-        NSInteger rate = 2;
-        if ([UIScreen mainScreen].bounds.size.height > 667)
-        {
-            rate = 3;
-        }
-        
-        //类似 ScaleAspectFill 配置
-        CGSize sizeImg = image.size;
-        if (image.size.height<image.size.width)
-        {
-            double coe = sizeImg.width/sizeImg.height;
-            sizeImg.height = size.height;
-            sizeImg.width  = sizeImg.height * coe;
-        }
-        else
-        {
-            double coe = sizeImg.width/sizeImg.height;
-            sizeImg.width   = size.width;
-            sizeImg.height  = sizeImg.width / coe;
-        }
-        UIGraphicsBeginImageContextWithOptions(sizeImg, NO, 0.0);
-        [image drawInRect:CGRectMake(0, 0, sizeImg.width, sizeImg.height)];
-        UIImage *imageTag = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        return imageTag;
+        rate = 3;
     }
-    return nil;
+    
+    //类似 ScaleAspectFill 配置
+    CGSize sizeImg = CGSizeMake(size.width*rate, size.height*rate);
+    if (self.size.height<self.size.width)
+    {
+        double coe = sizeImg.width/sizeImg.height;
+        sizeImg.width  = sizeImg.height * coe;
+    }
+    else
+    {
+        double coe = sizeImg.width/sizeImg.height;
+        sizeImg.height  = sizeImg.width / coe;
+    }
+    UIGraphicsBeginImageContextWithOptions(sizeImg, NO, 0.0);
+    [self drawInRect:CGRectMake(0, 0, sizeImg.width, sizeImg.height)];
+    UIImage *imageTag = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return imageTag;
+}
+
+
+/**UIView截图*/
++ (UIImage *)gs_imageWithView:(UIView*)view specifySize:(NSValue*)specifySize
+{
+    //支持retina高分的关键
+    CGSize size = specifySize ? [specifySize CGSizeValue] : view.frame.size;
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [view.layer renderInContext:context];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 

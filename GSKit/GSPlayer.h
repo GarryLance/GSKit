@@ -35,8 +35,10 @@
 /**在使用play方法前调用这个方法*/
 - (BOOL)prepareItemIndex:(NSInteger)index;
 
+/**播放*/
 - (void)play;
 
+/**暂停*/
 - (void)pause;
 
 @end
@@ -192,8 +194,10 @@
  */
 - (BOOL)getReadyForIndex:(NSInteger)index;
 
+/**播放*/
 - (void)play;
 
+/**暂停*/
 - (void)pause;
 
 @end
@@ -203,7 +207,9 @@
 @protocol GSVideoPlayerDelegate <NSObject>
 
 @optional
+/**在这个代理方法中自定义playerView*/
 - (void)videoPlayer:(GSVideoPlayer *)videoPlayer customPlayerView:(GSVideoPlayerView *)playerView;
+/**播放视图的size变化时调用*/
 - (void)videoPlayer:(GSVideoPlayer *)videoPlayer sizeChange:(CGSize)size playerView:(GSVideoPlayerView *)playerView;
 
 @end
