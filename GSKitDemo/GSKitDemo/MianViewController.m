@@ -10,7 +10,7 @@
 #import "GSDefine.h"
 #import "GSModelBase.h"
 #import "GSCameraNavigationController.h"
-#import "GSPublishViewController.h"
+#import "GSDemoCollectionViewController.h"
 
 
 @interface FunctionModel : GSModelBase
@@ -33,7 +33,7 @@
     model.title = title;
     model.functionClass = class;
     model.isPresent = isPresent;
-    return [model autorelease];
+    return model;
 }
 
 @end
@@ -51,13 +51,6 @@
 
 @implementation MianViewController
 
-- (void)dealloc
-{
-    [_functionModels release];
-    [super dealloc];
-}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -68,7 +61,6 @@
     tableView.dataSource = self;
     tableView.delegate = self;
     [self.view addSubview:tableView];
-    [tableView release];
     
     [self setupFunctionModels];
 }
@@ -77,8 +69,8 @@
 - (void)setupFunctionModels
 {
     NSMutableArray * array = [NSMutableArray array];
-    [array addObject:[FunctionModel modelWithTitle:@"拍照" functionClass:[GSCameraNavigationController class] isPresent:YES]];
-    [array addObject:[FunctionModel modelWithTitle:@"GSCollectionView" functionClass:[GSPublishViewController class] isPresent:NO]];
+    [array addObject:[FunctionModel modelWithTitle:@"GSCameraManager" functionClass:[GSCameraNavigationController class] isPresent:YES]];
+    [array addObject:[FunctionModel modelWithTitle:@"GSCollectionView" functionClass:[GSDemoCollectionViewController class] isPresent:NO]];
     self.functionModels = array;
 }
 
@@ -101,7 +93,7 @@
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell)
     {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
     cell.textLabel.text = [_functionModels objectAtIndex:indexPath.row].title;
@@ -121,12 +113,10 @@
         if (model.isPresent)
         {
             [self.navigationController presentViewController:vc animated:YES completion:nil];
-            [vc release];
         }
         else
         {
             [self.navigationController pushViewController:vc animated:YES];
-            [vc release];
         }
     }
 }

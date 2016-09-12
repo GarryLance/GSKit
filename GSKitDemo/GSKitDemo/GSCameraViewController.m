@@ -7,32 +7,22 @@
 //
 
 #import "GSCameraViewController.h"
-#import "GSEditPhotoViewController.h"
 #import "GSKit.h"
 
 
 @interface GSCameraViewController ()
 
-@property(retain,nonatomic) GSCameraManager * manager;
+@property(strong,nonatomic) GSCameraManager * manager;
 
-@property(retain,nonatomic) UIView * viewForPreview;
+@property(strong,nonatomic) UIView * viewForPreview;
 
-@property(retain,nonatomic) UIView * viewSudoku;
+@property(strong,nonatomic) UIView * viewSudoku;
 
 @end
 
 
 
 @implementation GSCameraViewController
-
-
-- (void)dealloc
-{
-    [_manager release];
-    [_viewSudoku release];
-    [_viewForPreview release];
-    [super dealloc];
-}
 
 
 - (void)viewDidLoad
@@ -73,12 +63,6 @@
 }
 
 
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
-
-
 - (void)setupManager
 {
     [_manager start];
@@ -87,7 +71,7 @@
 
 - (void)setupView
 {
-    self.manager = [[[GSCameraManager alloc] init] autorelease];
+    self.manager = [[GSCameraManager alloc] init];
     
     self.manager.imageForIntresetPoint = [[UIImage imageNamed:@"focus"] resizableImageWithCapInsets:UIEdgeInsetsMake(30, 30, 30, 30) resizingMode:UIImageResizingModeStretch];
     
@@ -104,7 +88,7 @@
     [viewSudoko.layer addSublayer:[self layerWithFrame:CGRectMake(0, CGRectGetHeight(viewSudoko.frame)/3.0*2-0.5, viewSudoko.frame.size.width, 1)]];
     viewSudoko.alpha = 0;
     [_viewForPreview addSubview:viewSudoko];
-    self.viewSudoku = [viewSudoko autorelease];
+    self.viewSudoku = viewSudoko;
     
     UIButton * btnTakePhoto = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage * imageTakePoto = [UIImage imageNamed:@"camera_shutter"];
@@ -150,10 +134,16 @@
 
 - (void)showImage:(UIImage *)image
 {
-    GSEditPhotoViewController * vc = [[GSEditPhotoViewController alloc] init];
-    vc.image = image;
+    //预览
+    UIViewController * vc = [[UIViewController alloc] init];
+    vc.view.backgroundColor = [UIColor whiteColor];
+    vc.title = @"预览";
+    UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, GSSCREEN_WIDTH, GSSCREEN_HEIGHT-64)];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.image = image;
+    [vc.view addSubview:imageView];
+    
     [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
 }
 
 
@@ -208,7 +198,7 @@
     CALayer * layer = [[CALayer alloc] init];
     layer.backgroundColor = [UIColor whiteColor].CGColor;
     layer.frame = frame;
-    return [layer autorelease];
+    return layer;
 }
 
 @end

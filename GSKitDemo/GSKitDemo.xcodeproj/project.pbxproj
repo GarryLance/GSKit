@@ -7,40 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C0FCC711D48B5B300AFDC4C /* GSUnderlineSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0FCC701D48B5B300AFDC4C /* GSUnderlineSelectionView.m */; };
-		1C0FCC741D48C06C00AFDC4C /* GSModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0FCC731D48C06C00AFDC4C /* GSModelBase.m */; };
-		1C1A86911D45A999003F6F7B /* GSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A867E1D45A999003F6F7B /* GSCalendar.m */; };
-		1C1A86921D45A999003F6F7B /* GSCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A86801D45A999003F6F7B /* GSCameraManager.m */; };
-		1C1A86931D45A999003F6F7B /* GSPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A86841D45A999003F6F7B /* GSPlayer.m */; };
-		1C1A86941D45A999003F6F7B /* GSTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A86861D45A999003F6F7B /* GSTimer.m */; };
-		1C1A86951D45A999003F6F7B /* GSTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A86881D45A999003F6F7B /* GSTool.m */; };
-		1C1A86961D45A999003F6F7B /* GSWaittingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A868A1D45A999003F6F7B /* GSWaittingView.m */; };
-		1C1A86971D45A999003F6F7B /* UIButton+GSBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A868C1D45A999003F6F7B /* UIButton+GSBlock.m */; };
-		1C1A86991D45A999003F6F7B /* UIView+GSLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1A86901D45A999003F6F7B /* UIView+GSLoading.m */; };
-		1C7FE8781D485898000BA9D6 /* GSLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7FE8771D485898000BA9D6 /* GSLayer.m */; };
-		1C7FE87B1D4858AC000BA9D6 /* GSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7FE87A1D4858AC000BA9D6 /* GSView.m */; };
-		1C7FE8811D485C5C000BA9D6 /* CALayer+GSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7FE8801D485C5C000BA9D6 /* CALayer+GSCategory.m */; };
-		1C81A85D1D4F452200E2FF39 /* UIImage+GSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C81A85C1D4F452200E2FF39 /* UIImage+GSCategory.m */; };
 		1CB4EB681D499FCA00C958F7 /* GSIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB4EB651D499FCA00C958F7 /* GSIndicatorView.m */; };
 		1CB4EB691D499FCA00C958F7 /* GSShapeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB4EB671D499FCA00C958F7 /* GSShapeSlider.m */; };
-		1CB4EB701D49A10100C958F7 /* GSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB4EB6F1D49A10100C958F7 /* GSCollectionViewController.m */; };
-		1CB4EB761D49A97D00C958F7 /* GSCollectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB4EB751D49A97D00C958F7 /* GSCollectionViewModel.m */; };
-		1CB4EB791D49AA5700C958F7 /* GSCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB4EB781D49AA5700C958F7 /* GSCollectionViewItem.m */; };
-		1CB4EB7C1D4A023000C958F7 /* GSCollectionViewItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB4EB7B1D4A023000C958F7 /* GSCollectionViewItemModel.m */; };
-		1CB4EB7F1D4A023900C958F7 /* GSCollectionViewSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB4EB7E1D4A023900C958F7 /* GSCollectionViewSectionModel.m */; };
-		1CB4EB821D4A0BAF00C958F7 /* GSCollectionViewDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB4EB811D4A0BAF00C958F7 /* GSCollectionViewDataModel.m */; };
 		1CDEA94D1D421EE5008701BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA94C1D421EE5008701BA /* main.m */; };
 		1CDEA9501D421EE5008701BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA94F1D421EE5008701BA /* AppDelegate.m */; };
-		1CDEA9531D421EE5008701BA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9521D421EE5008701BA /* ViewController.m */; };
 		1CDEA9581D421EE5008701BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CDEA9571D421EE5008701BA /* Assets.xcassets */; };
 		1CDEA95B1D421EE5008701BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CDEA9591D421EE5008701BA /* LaunchScreen.storyboard */; };
 		1CDEA9661D421EE5008701BA /* GSKitDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9651D421EE5008701BA /* GSKitDemoTests.m */; };
 		1CDEA9711D421EE5008701BA /* GSKitDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9701D421EE5008701BA /* GSKitDemoUITests.m */; };
 		1CDEA9A61D422262008701BA /* GSCameraNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA99D1D422262008701BA /* GSCameraNavigationController.m */; };
 		1CDEA9A71D422262008701BA /* GSCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA99F1D422262008701BA /* GSCameraViewController.m */; };
-		1CDEA9A81D422262008701BA /* GSEditPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9A11D422262008701BA /* GSEditPhotoViewController.m */; };
-		1CDEA9A91D422262008701BA /* GSPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9A31D422262008701BA /* GSPublishViewController.m */; };
 		1CDEA9AA1D422262008701BA /* MianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9A51D422262008701BA /* MianViewController.m */; };
+		4B001EF81D86BCE700234CBD /* GSDemoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B001EF71D86BCE700234CBD /* GSDemoCollectionViewController.m */; };
+		4B91E9531D800ACF00688A22 /* GSCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9281D800ACF00688A22 /* GSCameraManager.m */; };
+		4B91E9541D800ACF00688A22 /* GSPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E92A1D800ACF00688A22 /* GSPlayer.m */; };
+		4B91E9551D800ACF00688A22 /* GSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E92D1D800ACF00688A22 /* GSCalendar.m */; };
+		4B91E9561D800ACF00688A22 /* GSModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E92F1D800ACF00688A22 /* GSModelBase.m */; };
+		4B91E9571D800ACF00688A22 /* GSTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9311D800ACF00688A22 /* GSTimer.m */; };
+		4B91E9581D800ACF00688A22 /* GSTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9331D800ACF00688A22 /* GSTool.m */; };
+		4B91E9591D800ACF00688A22 /* CALayer+GSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9361D800ACF00688A22 /* CALayer+GSCategory.m */; };
+		4B91E95A1D800ACF00688A22 /* GSLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9381D800ACF00688A22 /* GSLayer.m */; };
+		4B91E95B1D800ACF00688A22 /* GSCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E93C1D800ACF00688A22 /* GSCollectionViewController.m */; };
+		4B91E95C1D800ACF00688A22 /* GSCollectionViewDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E93E1D800ACF00688A22 /* GSCollectionViewDataModel.m */; };
+		4B91E95D1D800ACF00688A22 /* GSCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9401D800ACF00688A22 /* GSCollectionViewItem.m */; };
+		4B91E95E1D800ACF00688A22 /* GSCollectionViewItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9421D800ACF00688A22 /* GSCollectionViewItemModel.m */; };
+		4B91E95F1D800ACF00688A22 /* GSCollectionViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9441D800ACF00688A22 /* GSCollectionViewModel.m */; };
+		4B91E9601D800ACF00688A22 /* GSCollectionViewSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9461D800ACF00688A22 /* GSCollectionViewSectionModel.m */; };
+		4B91E9611D800ACF00688A22 /* GSUnderlineSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9481D800ACF00688A22 /* GSUnderlineSelectionView.m */; };
+		4B91E9621D800ACF00688A22 /* GSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E94A1D800ACF00688A22 /* GSView.m */; };
+		4B91E9631D800ACF00688A22 /* GSWaittingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E94C1D800ACF00688A22 /* GSWaittingView.m */; };
+		4B91E9641D800ACF00688A22 /* UIButton+GSBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E94E1D800ACF00688A22 /* UIButton+GSBlock.m */; };
+		4B91E9651D800ACF00688A22 /* UIImage+GSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9501D800ACF00688A22 /* UIImage+GSCategory.m */; };
+		4B91E9661D800ACF00688A22 /* UIView+GSLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9521D800ACF00688A22 /* UIView+GSLoading.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,58 +59,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1C0FCC6F1D48B5B300AFDC4C /* GSUnderlineSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSUnderlineSelectionView.h; sourceTree = "<group>"; };
-		1C0FCC701D48B5B300AFDC4C /* GSUnderlineSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSUnderlineSelectionView.m; sourceTree = "<group>"; };
-		1C0FCC721D48C06C00AFDC4C /* GSModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSModelBase.h; sourceTree = "<group>"; };
-		1C0FCC731D48C06C00AFDC4C /* GSModelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSModelBase.m; sourceTree = "<group>"; };
-		1C1A867D1D45A999003F6F7B /* GSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCalendar.h; sourceTree = "<group>"; };
-		1C1A867E1D45A999003F6F7B /* GSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCalendar.m; sourceTree = "<group>"; };
-		1C1A867F1D45A999003F6F7B /* GSCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCameraManager.h; sourceTree = "<group>"; };
-		1C1A86801D45A999003F6F7B /* GSCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCameraManager.m; sourceTree = "<group>"; };
 		1C1A86811D45A999003F6F7B /* GSDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSDefine.h; sourceTree = "<group>"; };
 		1C1A86821D45A999003F6F7B /* GSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSKit.h; sourceTree = "<group>"; };
-		1C1A86831D45A999003F6F7B /* GSPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSPlayer.h; sourceTree = "<group>"; };
-		1C1A86841D45A999003F6F7B /* GSPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSPlayer.m; sourceTree = "<group>"; };
-		1C1A86851D45A999003F6F7B /* GSTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSTimer.h; sourceTree = "<group>"; };
-		1C1A86861D45A999003F6F7B /* GSTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSTimer.m; sourceTree = "<group>"; };
-		1C1A86871D45A999003F6F7B /* GSTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSTool.h; sourceTree = "<group>"; };
-		1C1A86881D45A999003F6F7B /* GSTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSTool.m; sourceTree = "<group>"; };
-		1C1A86891D45A999003F6F7B /* GSWaittingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSWaittingView.h; sourceTree = "<group>"; };
-		1C1A868A1D45A999003F6F7B /* GSWaittingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSWaittingView.m; sourceTree = "<group>"; };
-		1C1A868B1D45A999003F6F7B /* UIButton+GSBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+GSBlock.h"; sourceTree = "<group>"; };
-		1C1A868C1D45A999003F6F7B /* UIButton+GSBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+GSBlock.m"; sourceTree = "<group>"; };
-		1C1A868F1D45A999003F6F7B /* UIView+GSLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GSLoading.h"; sourceTree = "<group>"; };
-		1C1A86901D45A999003F6F7B /* UIView+GSLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GSLoading.m"; sourceTree = "<group>"; };
-		1C7FE8761D485898000BA9D6 /* GSLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSLayer.h; sourceTree = "<group>"; };
-		1C7FE8771D485898000BA9D6 /* GSLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSLayer.m; sourceTree = "<group>"; };
-		1C7FE8791D4858AC000BA9D6 /* GSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSView.h; sourceTree = "<group>"; };
-		1C7FE87A1D4858AC000BA9D6 /* GSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSView.m; sourceTree = "<group>"; };
-		1C7FE87F1D485C5C000BA9D6 /* CALayer+GSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+GSCategory.h"; sourceTree = "<group>"; };
-		1C7FE8801D485C5C000BA9D6 /* CALayer+GSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+GSCategory.m"; sourceTree = "<group>"; };
-		1C81A85B1D4F452200E2FF39 /* UIImage+GSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GSCategory.h"; sourceTree = "<group>"; };
-		1C81A85C1D4F452200E2FF39 /* UIImage+GSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GSCategory.m"; sourceTree = "<group>"; };
 		1CB4EB641D499FCA00C958F7 /* GSIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSIndicatorView.h; sourceTree = "<group>"; };
 		1CB4EB651D499FCA00C958F7 /* GSIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSIndicatorView.m; sourceTree = "<group>"; };
 		1CB4EB661D499FCA00C958F7 /* GSShapeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSShapeSlider.h; sourceTree = "<group>"; };
 		1CB4EB671D499FCA00C958F7 /* GSShapeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSShapeSlider.m; sourceTree = "<group>"; };
-		1CB4EB6E1D49A10100C958F7 /* GSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCollectionViewController.h; sourceTree = "<group>"; };
-		1CB4EB6F1D49A10100C958F7 /* GSCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCollectionViewController.m; sourceTree = "<group>"; };
-		1CB4EB741D49A97D00C958F7 /* GSCollectionViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCollectionViewModel.h; sourceTree = "<group>"; };
-		1CB4EB751D49A97D00C958F7 /* GSCollectionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCollectionViewModel.m; sourceTree = "<group>"; };
-		1CB4EB771D49AA5700C958F7 /* GSCollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCollectionViewItem.h; sourceTree = "<group>"; };
-		1CB4EB781D49AA5700C958F7 /* GSCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCollectionViewItem.m; sourceTree = "<group>"; };
-		1CB4EB7A1D4A023000C958F7 /* GSCollectionViewItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCollectionViewItemModel.h; sourceTree = "<group>"; };
-		1CB4EB7B1D4A023000C958F7 /* GSCollectionViewItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCollectionViewItemModel.m; sourceTree = "<group>"; };
-		1CB4EB7D1D4A023900C958F7 /* GSCollectionViewSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCollectionViewSectionModel.h; sourceTree = "<group>"; };
-		1CB4EB7E1D4A023900C958F7 /* GSCollectionViewSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCollectionViewSectionModel.m; sourceTree = "<group>"; };
-		1CB4EB801D4A0BAF00C958F7 /* GSCollectionViewDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCollectionViewDataModel.h; sourceTree = "<group>"; };
-		1CB4EB811D4A0BAF00C958F7 /* GSCollectionViewDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCollectionViewDataModel.m; sourceTree = "<group>"; };
 		1CDEA9481D421EE5008701BA /* GSKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GSKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CDEA94C1D421EE5008701BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CDEA94E1D421EE5008701BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1CDEA94F1D421EE5008701BA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1CDEA9511D421EE5008701BA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1CDEA9521D421EE5008701BA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1CDEA9571D421EE5008701BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CDEA95A1D421EE5008701BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CDEA95C1D421EE5008701BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,13 +81,51 @@
 		1CDEA99C1D422262008701BA /* GSCameraNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCameraNavigationController.h; sourceTree = "<group>"; };
 		1CDEA99D1D422262008701BA /* GSCameraNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCameraNavigationController.m; sourceTree = "<group>"; };
 		1CDEA99E1D422262008701BA /* GSCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCameraViewController.h; sourceTree = "<group>"; };
-		1CDEA99F1D422262008701BA /* GSCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCameraViewController.m; sourceTree = "<group>"; };
-		1CDEA9A01D422262008701BA /* GSEditPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSEditPhotoViewController.h; sourceTree = "<group>"; };
-		1CDEA9A11D422262008701BA /* GSEditPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSEditPhotoViewController.m; sourceTree = "<group>"; };
-		1CDEA9A21D422262008701BA /* GSPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSPublishViewController.h; sourceTree = "<group>"; };
-		1CDEA9A31D422262008701BA /* GSPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSPublishViewController.m; sourceTree = "<group>"; };
+		1CDEA99F1D422262008701BA /* GSCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GSCameraViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1CDEA9A41D422262008701BA /* MianViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MianViewController.h; sourceTree = "<group>"; };
 		1CDEA9A51D422262008701BA /* MianViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MianViewController.m; sourceTree = "<group>"; };
+		4B001EF61D86BCE700234CBD /* GSDemoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSDemoCollectionViewController.h; sourceTree = "<group>"; };
+		4B001EF71D86BCE700234CBD /* GSDemoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSDemoCollectionViewController.m; sourceTree = "<group>"; };
+		4B91E9271D800ACF00688A22 /* GSCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCameraManager.h; sourceTree = "<group>"; };
+		4B91E9281D800ACF00688A22 /* GSCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCameraManager.m; sourceTree = "<group>"; };
+		4B91E9291D800ACF00688A22 /* GSPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSPlayer.h; sourceTree = "<group>"; };
+		4B91E92A1D800ACF00688A22 /* GSPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSPlayer.m; sourceTree = "<group>"; };
+		4B91E92C1D800ACF00688A22 /* GSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCalendar.h; sourceTree = "<group>"; };
+		4B91E92D1D800ACF00688A22 /* GSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCalendar.m; sourceTree = "<group>"; };
+		4B91E92E1D800ACF00688A22 /* GSModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSModelBase.h; sourceTree = "<group>"; };
+		4B91E92F1D800ACF00688A22 /* GSModelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSModelBase.m; sourceTree = "<group>"; };
+		4B91E9301D800ACF00688A22 /* GSTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSTimer.h; sourceTree = "<group>"; };
+		4B91E9311D800ACF00688A22 /* GSTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSTimer.m; sourceTree = "<group>"; };
+		4B91E9321D800ACF00688A22 /* GSTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSTool.h; sourceTree = "<group>"; };
+		4B91E9331D800ACF00688A22 /* GSTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSTool.m; sourceTree = "<group>"; };
+		4B91E9351D800ACF00688A22 /* CALayer+GSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+GSCategory.h"; sourceTree = "<group>"; };
+		4B91E9361D800ACF00688A22 /* CALayer+GSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+GSCategory.m"; sourceTree = "<group>"; };
+		4B91E9371D800ACF00688A22 /* GSLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSLayer.h; sourceTree = "<group>"; };
+		4B91E9381D800ACF00688A22 /* GSLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSLayer.m; sourceTree = "<group>"; };
+		4B91E93B1D800ACF00688A22 /* GSCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCollectionViewController.h; sourceTree = "<group>"; };
+		4B91E93C1D800ACF00688A22 /* GSCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCollectionViewController.m; sourceTree = "<group>"; };
+		4B91E93D1D800ACF00688A22 /* GSCollectionViewDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCollectionViewDataModel.h; sourceTree = "<group>"; };
+		4B91E93E1D800ACF00688A22 /* GSCollectionViewDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCollectionViewDataModel.m; sourceTree = "<group>"; };
+		4B91E93F1D800ACF00688A22 /* GSCollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCollectionViewItem.h; sourceTree = "<group>"; };
+		4B91E9401D800ACF00688A22 /* GSCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCollectionViewItem.m; sourceTree = "<group>"; };
+		4B91E9411D800ACF00688A22 /* GSCollectionViewItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCollectionViewItemModel.h; sourceTree = "<group>"; };
+		4B91E9421D800ACF00688A22 /* GSCollectionViewItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCollectionViewItemModel.m; sourceTree = "<group>"; };
+		4B91E9431D800ACF00688A22 /* GSCollectionViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCollectionViewModel.h; sourceTree = "<group>"; };
+		4B91E9441D800ACF00688A22 /* GSCollectionViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCollectionViewModel.m; sourceTree = "<group>"; };
+		4B91E9451D800ACF00688A22 /* GSCollectionViewSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCollectionViewSectionModel.h; sourceTree = "<group>"; };
+		4B91E9461D800ACF00688A22 /* GSCollectionViewSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCollectionViewSectionModel.m; sourceTree = "<group>"; };
+		4B91E9471D800ACF00688A22 /* GSUnderlineSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSUnderlineSelectionView.h; sourceTree = "<group>"; };
+		4B91E9481D800ACF00688A22 /* GSUnderlineSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSUnderlineSelectionView.m; sourceTree = "<group>"; };
+		4B91E9491D800ACF00688A22 /* GSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSView.h; sourceTree = "<group>"; };
+		4B91E94A1D800ACF00688A22 /* GSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSView.m; sourceTree = "<group>"; };
+		4B91E94B1D800ACF00688A22 /* GSWaittingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSWaittingView.h; sourceTree = "<group>"; };
+		4B91E94C1D800ACF00688A22 /* GSWaittingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSWaittingView.m; sourceTree = "<group>"; };
+		4B91E94D1D800ACF00688A22 /* UIButton+GSBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+GSBlock.h"; sourceTree = "<group>"; };
+		4B91E94E1D800ACF00688A22 /* UIButton+GSBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+GSBlock.m"; sourceTree = "<group>"; };
+		4B91E94F1D800ACF00688A22 /* UIImage+GSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GSCategory.h"; sourceTree = "<group>"; };
+		4B91E9501D800ACF00688A22 /* UIImage+GSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GSCategory.m"; sourceTree = "<group>"; };
+		4B91E9511D800ACF00688A22 /* UIView+GSLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GSLoading.h"; sourceTree = "<group>"; };
+		4B91E9521D800ACF00688A22 /* UIView+GSLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GSLoading.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,35 +158,10 @@
 			children = (
 				1C1A86821D45A999003F6F7B /* GSKit.h */,
 				1C1A86811D45A999003F6F7B /* GSDefine.h */,
-				1C0FCC721D48C06C00AFDC4C /* GSModelBase.h */,
-				1C0FCC731D48C06C00AFDC4C /* GSModelBase.m */,
-				1C1A86871D45A999003F6F7B /* GSTool.h */,
-				1C1A86881D45A999003F6F7B /* GSTool.m */,
-				1C1A867D1D45A999003F6F7B /* GSCalendar.h */,
-				1C1A867E1D45A999003F6F7B /* GSCalendar.m */,
-				1C1A867F1D45A999003F6F7B /* GSCameraManager.h */,
-				1C1A86801D45A999003F6F7B /* GSCameraManager.m */,
-				1C1A86831D45A999003F6F7B /* GSPlayer.h */,
-				1C1A86841D45A999003F6F7B /* GSPlayer.m */,
-				1C1A86851D45A999003F6F7B /* GSTimer.h */,
-				1C1A86861D45A999003F6F7B /* GSTimer.m */,
-				1C1A86891D45A999003F6F7B /* GSWaittingView.h */,
-				1C1A868A1D45A999003F6F7B /* GSWaittingView.m */,
-				1C1A868B1D45A999003F6F7B /* UIButton+GSBlock.h */,
-				1C1A868C1D45A999003F6F7B /* UIButton+GSBlock.m */,
-				1C0FCC6F1D48B5B300AFDC4C /* GSUnderlineSelectionView.h */,
-				1C0FCC701D48B5B300AFDC4C /* GSUnderlineSelectionView.m */,
-				1C81A85B1D4F452200E2FF39 /* UIImage+GSCategory.h */,
-				1C81A85C1D4F452200E2FF39 /* UIImage+GSCategory.m */,
-				1C1A868F1D45A999003F6F7B /* UIView+GSLoading.h */,
-				1C1A86901D45A999003F6F7B /* UIView+GSLoading.m */,
-				1C7FE87F1D485C5C000BA9D6 /* CALayer+GSCategory.h */,
-				1C7FE8801D485C5C000BA9D6 /* CALayer+GSCategory.m */,
-				1C7FE8761D485898000BA9D6 /* GSLayer.h */,
-				1C7FE8771D485898000BA9D6 /* GSLayer.m */,
-				1C7FE8791D4858AC000BA9D6 /* GSView.h */,
-				1C7FE87A1D4858AC000BA9D6 /* GSView.m */,
-				1CB4EB6D1D49A0F700C958F7 /* CollectionView */,
+				4B91E92B1D800ACF00688A22 /* Other */,
+				4B91E9391D800ACF00688A22 /* UIKit */,
+				4B91E9341D800ACF00688A22 /* Quartz */,
+				4B91E9261D800ACF00688A22 /* Function */,
 				1CB4EB631D499FCA00C958F7 /* Spec */,
 			);
 			name = GSKit;
@@ -208,25 +177,6 @@
 				1CB4EB671D499FCA00C958F7 /* GSShapeSlider.m */,
 			);
 			path = Spec;
-			sourceTree = "<group>";
-		};
-		1CB4EB6D1D49A0F700C958F7 /* CollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				1CB4EB6E1D49A10100C958F7 /* GSCollectionViewController.h */,
-				1CB4EB6F1D49A10100C958F7 /* GSCollectionViewController.m */,
-				1CB4EB771D49AA5700C958F7 /* GSCollectionViewItem.h */,
-				1CB4EB781D49AA5700C958F7 /* GSCollectionViewItem.m */,
-				1CB4EB801D4A0BAF00C958F7 /* GSCollectionViewDataModel.h */,
-				1CB4EB811D4A0BAF00C958F7 /* GSCollectionViewDataModel.m */,
-				1CB4EB741D49A97D00C958F7 /* GSCollectionViewModel.h */,
-				1CB4EB751D49A97D00C958F7 /* GSCollectionViewModel.m */,
-				1CB4EB7A1D4A023000C958F7 /* GSCollectionViewItemModel.h */,
-				1CB4EB7B1D4A023000C958F7 /* GSCollectionViewItemModel.m */,
-				1CB4EB7D1D4A023900C958F7 /* GSCollectionViewSectionModel.h */,
-				1CB4EB7E1D4A023900C958F7 /* GSCollectionViewSectionModel.m */,
-			);
-			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		1CDEA93F1D421EE5008701BA = {
@@ -255,18 +205,14 @@
 			children = (
 				1CDEA94E1D421EE5008701BA /* AppDelegate.h */,
 				1CDEA94F1D421EE5008701BA /* AppDelegate.m */,
-				1CDEA9511D421EE5008701BA /* ViewController.h */,
-				1CDEA9521D421EE5008701BA /* ViewController.m */,
 				1CDEA9A41D422262008701BA /* MianViewController.h */,
 				1CDEA9A51D422262008701BA /* MianViewController.m */,
 				1CDEA99C1D422262008701BA /* GSCameraNavigationController.h */,
 				1CDEA99D1D422262008701BA /* GSCameraNavigationController.m */,
 				1CDEA99E1D422262008701BA /* GSCameraViewController.h */,
 				1CDEA99F1D422262008701BA /* GSCameraViewController.m */,
-				1CDEA9A01D422262008701BA /* GSEditPhotoViewController.h */,
-				1CDEA9A11D422262008701BA /* GSEditPhotoViewController.m */,
-				1CDEA9A21D422262008701BA /* GSPublishViewController.h */,
-				1CDEA9A31D422262008701BA /* GSPublishViewController.m */,
+				4B001EF61D86BCE700234CBD /* GSDemoCollectionViewController.h */,
+				4B001EF71D86BCE700234CBD /* GSDemoCollectionViewController.m */,
 				1CDEA9571D421EE5008701BA /* Assets.xcassets */,
 				1CDEA9591D421EE5008701BA /* LaunchScreen.storyboard */,
 				1CDEA95C1D421EE5008701BA /* Info.plist */,
@@ -299,6 +245,82 @@
 				1CDEA9721D421EE5008701BA /* Info.plist */,
 			);
 			path = GSKitDemoUITests;
+			sourceTree = "<group>";
+		};
+		4B91E9261D800ACF00688A22 /* Function */ = {
+			isa = PBXGroup;
+			children = (
+				4B91E9271D800ACF00688A22 /* GSCameraManager.h */,
+				4B91E9281D800ACF00688A22 /* GSCameraManager.m */,
+				4B91E9291D800ACF00688A22 /* GSPlayer.h */,
+				4B91E92A1D800ACF00688A22 /* GSPlayer.m */,
+			);
+			path = Function;
+			sourceTree = "<group>";
+		};
+		4B91E92B1D800ACF00688A22 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				4B91E92C1D800ACF00688A22 /* GSCalendar.h */,
+				4B91E92D1D800ACF00688A22 /* GSCalendar.m */,
+				4B91E92E1D800ACF00688A22 /* GSModelBase.h */,
+				4B91E92F1D800ACF00688A22 /* GSModelBase.m */,
+				4B91E9301D800ACF00688A22 /* GSTimer.h */,
+				4B91E9311D800ACF00688A22 /* GSTimer.m */,
+				4B91E9321D800ACF00688A22 /* GSTool.h */,
+				4B91E9331D800ACF00688A22 /* GSTool.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		4B91E9341D800ACF00688A22 /* Quartz */ = {
+			isa = PBXGroup;
+			children = (
+				4B91E9351D800ACF00688A22 /* CALayer+GSCategory.h */,
+				4B91E9361D800ACF00688A22 /* CALayer+GSCategory.m */,
+				4B91E9371D800ACF00688A22 /* GSLayer.h */,
+				4B91E9381D800ACF00688A22 /* GSLayer.m */,
+			);
+			path = Quartz;
+			sourceTree = "<group>";
+		};
+		4B91E9391D800ACF00688A22 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				4B91E93A1D800ACF00688A22 /* CollectionView */,
+				4B91E9471D800ACF00688A22 /* GSUnderlineSelectionView.h */,
+				4B91E9481D800ACF00688A22 /* GSUnderlineSelectionView.m */,
+				4B91E9491D800ACF00688A22 /* GSView.h */,
+				4B91E94A1D800ACF00688A22 /* GSView.m */,
+				4B91E94B1D800ACF00688A22 /* GSWaittingView.h */,
+				4B91E94C1D800ACF00688A22 /* GSWaittingView.m */,
+				4B91E94D1D800ACF00688A22 /* UIButton+GSBlock.h */,
+				4B91E94E1D800ACF00688A22 /* UIButton+GSBlock.m */,
+				4B91E94F1D800ACF00688A22 /* UIImage+GSCategory.h */,
+				4B91E9501D800ACF00688A22 /* UIImage+GSCategory.m */,
+				4B91E9511D800ACF00688A22 /* UIView+GSLoading.h */,
+				4B91E9521D800ACF00688A22 /* UIView+GSLoading.m */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		4B91E93A1D800ACF00688A22 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				4B91E93B1D800ACF00688A22 /* GSCollectionViewController.h */,
+				4B91E93C1D800ACF00688A22 /* GSCollectionViewController.m */,
+				4B91E93D1D800ACF00688A22 /* GSCollectionViewDataModel.h */,
+				4B91E93E1D800ACF00688A22 /* GSCollectionViewDataModel.m */,
+				4B91E93F1D800ACF00688A22 /* GSCollectionViewItem.h */,
+				4B91E9401D800ACF00688A22 /* GSCollectionViewItem.m */,
+				4B91E9411D800ACF00688A22 /* GSCollectionViewItemModel.h */,
+				4B91E9421D800ACF00688A22 /* GSCollectionViewItemModel.m */,
+				4B91E9431D800ACF00688A22 /* GSCollectionViewModel.h */,
+				4B91E9441D800ACF00688A22 /* GSCollectionViewModel.m */,
+				4B91E9451D800ACF00688A22 /* GSCollectionViewSectionModel.h */,
+				4B91E9461D800ACF00688A22 /* GSCollectionViewSectionModel.m */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,35 +453,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CDEA9A71D422262008701BA /* GSCameraViewController.m in Sources */,
-				1C1A86961D45A999003F6F7B /* GSWaittingView.m in Sources */,
-				1C7FE8811D485C5C000BA9D6 /* CALayer+GSCategory.m in Sources */,
+				4B91E9551D800ACF00688A22 /* GSCalendar.m in Sources */,
+				4B001EF81D86BCE700234CBD /* GSDemoCollectionViewController.m in Sources */,
+				4B91E95C1D800ACF00688A22 /* GSCollectionViewDataModel.m in Sources */,
 				1CB4EB681D499FCA00C958F7 /* GSIndicatorView.m in Sources */,
+				4B91E9591D800ACF00688A22 /* CALayer+GSCategory.m in Sources */,
 				1CB4EB691D499FCA00C958F7 /* GSShapeSlider.m in Sources */,
-				1C1A86951D45A999003F6F7B /* GSTool.m in Sources */,
-				1CDEA9531D421EE5008701BA /* ViewController.m in Sources */,
-				1CDEA9A81D422262008701BA /* GSEditPhotoViewController.m in Sources */,
-				1C1A86971D45A999003F6F7B /* UIButton+GSBlock.m in Sources */,
+				4B91E9611D800ACF00688A22 /* GSUnderlineSelectionView.m in Sources */,
+				4B91E9571D800ACF00688A22 /* GSTimer.m in Sources */,
+				4B91E95D1D800ACF00688A22 /* GSCollectionViewItem.m in Sources */,
 				1CDEA9A61D422262008701BA /* GSCameraNavigationController.m in Sources */,
-				1CB4EB791D49AA5700C958F7 /* GSCollectionViewItem.m in Sources */,
+				4B91E9541D800ACF00688A22 /* GSPlayer.m in Sources */,
+				4B91E9581D800ACF00688A22 /* GSTool.m in Sources */,
+				4B91E9631D800ACF00688A22 /* GSWaittingView.m in Sources */,
+				4B91E95A1D800ACF00688A22 /* GSLayer.m in Sources */,
+				4B91E95F1D800ACF00688A22 /* GSCollectionViewModel.m in Sources */,
+				4B91E9601D800ACF00688A22 /* GSCollectionViewSectionModel.m in Sources */,
+				4B91E95E1D800ACF00688A22 /* GSCollectionViewItemModel.m in Sources */,
+				4B91E9651D800ACF00688A22 /* UIImage+GSCategory.m in Sources */,
 				1CDEA9501D421EE5008701BA /* AppDelegate.m in Sources */,
-				1CDEA9A91D422262008701BA /* GSPublishViewController.m in Sources */,
-				1C7FE8781D485898000BA9D6 /* GSLayer.m in Sources */,
-				1CB4EB7C1D4A023000C958F7 /* GSCollectionViewItemModel.m in Sources */,
-				1CB4EB821D4A0BAF00C958F7 /* GSCollectionViewDataModel.m in Sources */,
-				1C0FCC741D48C06C00AFDC4C /* GSModelBase.m in Sources */,
-				1C81A85D1D4F452200E2FF39 /* UIImage+GSCategory.m in Sources */,
-				1C1A86931D45A999003F6F7B /* GSPlayer.m in Sources */,
-				1C0FCC711D48B5B300AFDC4C /* GSUnderlineSelectionView.m in Sources */,
-				1CB4EB7F1D4A023900C958F7 /* GSCollectionViewSectionModel.m in Sources */,
+				4B91E9641D800ACF00688A22 /* UIButton+GSBlock.m in Sources */,
+				4B91E9621D800ACF00688A22 /* GSView.m in Sources */,
+				4B91E9531D800ACF00688A22 /* GSCameraManager.m in Sources */,
 				1CDEA9AA1D422262008701BA /* MianViewController.m in Sources */,
-				1C1A86911D45A999003F6F7B /* GSCalendar.m in Sources */,
-				1CB4EB761D49A97D00C958F7 /* GSCollectionViewModel.m in Sources */,
-				1C1A86991D45A999003F6F7B /* UIView+GSLoading.m in Sources */,
-				1C7FE87B1D4858AC000BA9D6 /* GSView.m in Sources */,
-				1C1A86921D45A999003F6F7B /* GSCameraManager.m in Sources */,
 				1CDEA94D1D421EE5008701BA /* main.m in Sources */,
-				1C1A86941D45A999003F6F7B /* GSTimer.m in Sources */,
-				1CB4EB701D49A10100C958F7 /* GSCollectionViewController.m in Sources */,
+				4B91E9561D800ACF00688A22 /* GSModelBase.m in Sources */,
+				4B91E9661D800ACF00688A22 /* UIView+GSLoading.m in Sources */,
+				4B91E95B1D800ACF00688A22 /* GSCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,7 +612,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				INFOPLIST_FILE = GSKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -605,7 +625,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				INFOPLIST_FILE = GSKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

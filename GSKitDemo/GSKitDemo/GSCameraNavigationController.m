@@ -24,7 +24,7 @@
 - (instancetype)init
 {
     GSCameraViewController * vc = [[GSCameraViewController alloc] init];
-    self = [super initWithRootViewController:[vc autorelease]];
+    self = [super initWithRootViewController:vc];
     if (self)
     {
         self.navigationBar.translucent = NO;
@@ -34,7 +34,7 @@
         //barItem 颜色
         [self.navigationBar setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"navColor"]]];
         
-        vc.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"common_titlebar_close_orange"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissAction:)] autorelease];
+        vc.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"common_titlebar_close_orange"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissAction:)];
     }
     return self;
 }
@@ -48,7 +48,6 @@
     {
         UIBarButtonItem * left = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"common_titlebar_back_orange"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction:)];
         viewController.navigationItem.leftBarButtonItem = left;
-        [left release];
         
         self.interactivePopGestureRecognizer.enabled = YES;
     }

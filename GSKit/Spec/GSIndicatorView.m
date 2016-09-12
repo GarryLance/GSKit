@@ -11,8 +11,8 @@
 
 @interface GSIndicatorView ()
 
-@property (retain, nonatomic) UILabel * nowLabel;
-@property (retain, nonatomic) UILabel * sumLabel;
+@property (strong, nonatomic) UILabel * nowLabel;
+@property (strong, nonatomic) UILabel * sumLabel;
 
 @end
 
@@ -22,15 +22,7 @@
 + (instancetype)zaozaoAssessmentIndicator
 {
     GSIndicatorView * indicatorView = [[GSIndicatorView alloc] initWithZaozaoAssessmentIndicator];
-    return [indicatorView autorelease];
-}
-
-
-- (void)dealloc
-{
-    [_nowLabel release];
-    [_sumLabel release];
-    [super dealloc];
+    return indicatorView;
 }
 
 
@@ -39,8 +31,8 @@
     self = [super initWithFrame:frame];
     if (self) {
     
-        _nowLabel = [[UILabel alloc] init];
-        _sumLabel = [[UILabel alloc] init];
+        self.nowLabel = [[UILabel alloc] init];
+        self.sumLabel = [[UILabel alloc] init];
     }
     return self;
 }
@@ -76,7 +68,6 @@
         UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"questionnaire_progress_mark"]];
         self.frame = imageView.frame;
         [self addSubview:imageView];
-        [imageView release];
         
         _nowLabel.frame = CGRectMake(5, 5, 25, 10);
         _sumLabel.frame = CGRectMake(5, CGRectGetMaxY(_nowLabel.frame)+3.5, 25, 10);
