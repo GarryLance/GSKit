@@ -106,7 +106,7 @@
     }
     else if (gs_model.imageUrl)
     {
-        BLOCKSELF
+        WEAKSELF
         BLOCK_TYPE(gs_model, __gs_model);
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
            
@@ -115,9 +115,9 @@
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
                    
-                    if (__gs_model == blockSelf.gs_model)
+                    if (__gs_model == _self.gs_model)
                     {
-                        blockSelf.gs_imageView.image = image;
+                        _self.gs_imageView.image = image;
                     }
                 });
             }

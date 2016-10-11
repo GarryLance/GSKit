@@ -39,13 +39,13 @@
     
     if (seconds)
     {
-        BLOCKSELF
+        WEAKSELF
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            if ([blockSelf.delegate respondsToSelector:@selector(timerLoopEnd:)])
+            if ([_self.delegate respondsToSelector:@selector(timerLoopEnd:)])
             {
-                [blockSelf.delegate timerLoopEnd:blockSelf];
+                [_self.delegate timerLoopEnd:_self];
             }
-            [blockSelf countDownSeconds:seconds-1];
+            [_self countDownSeconds:seconds-1];
         });
     }
     else

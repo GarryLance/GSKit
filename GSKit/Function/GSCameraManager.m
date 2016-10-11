@@ -21,7 +21,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 
 
-@interface GSCameraManager () <AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface GSCameraManager () <AVCaptureVideoDataOutputSampleBufferDelegate,CAAnimationDelegate>
 {
     GSView * _viewPreview;
 }
@@ -133,10 +133,10 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         self.layerPreview = [[GSCameraLayer alloc] init];
         _layerPreview.masksToBounds = YES;
         [_layerPreview addSublayer:_captureVideoPreviewLayer];
-        BLOCKSELF
+        WEAKSELF
         _layerPreview.blockForFrameChange = ^(CGRect frame){
             
-            blockSelf.captureVideoPreviewLayer.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+            _self.captureVideoPreviewLayer.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         };
         
     }
@@ -182,17 +182,17 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         }
     }
     
-    BLOCKSELF
+    WEAKSELF
     AVCaptureConnection * connection = [self.captureStillImageOutput connectionWithMediaType:AVMediaTypeVideo];
     [_captureStillImageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
         
-        [blockSelf stop];
+        [_self stop];
         NSData * data = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
         UIImage * image = [UIImage imageWithData:data];
         //完成回调
-        if (blockSelf.takePhotoCompletionBlock)
+        if (_self.takePhotoCompletionBlock)
         {
-            blockSelf.takePhotoCompletionBlock(image);
+            _self.takePhotoCompletionBlock(image);
         }
     }];
 }
@@ -351,10 +351,10 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     if (!_viewPreview)
     {
         self.viewPreview = [[GSView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_layerPreview.frame), CGRectGetHeight(_layerPreview.frame))];
-        BLOCKSELF
+        WEAKSELF
         [_viewPreview setBlockForFrameChange:^(CGRect frame) {
             
-            blockSelf.layerPreview.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+            _self.layerPreview.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         }];
         
         //添加浏览层

@@ -202,20 +202,20 @@
 - (void)addPeriodicTimeObserver;
 {
     //定时观察
-    BLOCKSELF
+    WEAKSELF
     self.periodicTimeObserver = [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 2) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         
         NSMutableDictionary * dictv = [NSMutableDictionary dictionary];
         
-        CGFloat total    = CMTimeGetSeconds([blockSelf.player currentItem].duration);
+        CGFloat total    = CMTimeGetSeconds([_self.player currentItem].duration);
         CGFloat current  = CMTimeGetSeconds(time);
         
         [dictv setObject:[NSNumber numberWithFloat:total] forKey:GSPLAYER_KEY_TOTAL];
         [dictv setObject:[NSNumber numberWithFloat:current] forKey:GSPLAYER_KEY_CURRENT];
         
-        if (blockSelf.delegate && [blockSelf.delegate respondsToSelector:@selector(player:periodicTimeObserver:)])
+        if (_self.delegate && [_self.delegate respondsToSelector:@selector(player:periodicTimeObserver:)])
         {
-            [blockSelf.delegate player:blockSelf periodicTimeObserver:dictv];
+            [_self.delegate player:_self periodicTimeObserver:dictv];
         }
     }];
 }
