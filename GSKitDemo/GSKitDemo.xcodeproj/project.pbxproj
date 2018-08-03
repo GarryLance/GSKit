@@ -20,7 +20,6 @@
 		1CDEA9AA1D422262008701BA /* MianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDEA9A51D422262008701BA /* MianViewController.m */; };
 		4B001EF81D86BCE700234CBD /* GSDemoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B001EF71D86BCE700234CBD /* GSDemoCollectionViewController.m */; };
 		4B3D6E4A21140CDB009AF6E6 /* GSLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9381D800ACF00688A22 /* GSLayer.m */; };
-		4B3D6E5021140D90009AF6E6 /* GSPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3D6E4F21140D90009AF6E6 /* GSPlayer.m */; };
 		4B91E9531D800ACF00688A22 /* GSCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9281D800ACF00688A22 /* GSCameraManager.m */; };
 		4B91E9551D800ACF00688A22 /* GSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E92D1D800ACF00688A22 /* GSCalendar.m */; };
 		4B91E9561D800ACF00688A22 /* GSModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E92F1D800ACF00688A22 /* GSModelBase.m */; };
@@ -39,6 +38,7 @@
 		4B91E9641D800ACF00688A22 /* UIButton+GSBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E94E1D800ACF00688A22 /* UIButton+GSBlock.m */; };
 		4B91E9651D800ACF00688A22 /* UIImage+GSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9501D800ACF00688A22 /* UIImage+GSCategory.m */; };
 		4B91E9661D800ACF00688A22 /* UIView+GSLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B91E9521D800ACF00688A22 /* UIView+GSLoading.m */; };
+		4BBC0D562114103200119040 /* GSPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBC0D552114103100119040 /* GSPlayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,8 +86,6 @@
 		1CDEA9A51D422262008701BA /* MianViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MianViewController.m; sourceTree = "<group>"; };
 		4B001EF61D86BCE700234CBD /* GSDemoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSDemoCollectionViewController.h; sourceTree = "<group>"; };
 		4B001EF71D86BCE700234CBD /* GSDemoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSDemoCollectionViewController.m; sourceTree = "<group>"; };
-		4B3D6E4E21140D90009AF6E6 /* GSPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSPlayer.h; sourceTree = "<group>"; };
-		4B3D6E4F21140D90009AF6E6 /* GSPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSPlayer.m; sourceTree = "<group>"; };
 		4B91E9271D800ACF00688A22 /* GSCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCameraManager.h; sourceTree = "<group>"; };
 		4B91E9281D800ACF00688A22 /* GSCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCameraManager.m; sourceTree = "<group>"; };
 		4B91E92C1D800ACF00688A22 /* GSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCalendar.h; sourceTree = "<group>"; };
@@ -126,6 +124,8 @@
 		4B91E9501D800ACF00688A22 /* UIImage+GSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GSCategory.m"; sourceTree = "<group>"; };
 		4B91E9511D800ACF00688A22 /* UIView+GSLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GSLoading.h"; sourceTree = "<group>"; };
 		4B91E9521D800ACF00688A22 /* UIView+GSLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GSLoading.m"; sourceTree = "<group>"; };
+		4BBC0D542114103100119040 /* GSPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSPlayer.h; sourceTree = "<group>"; };
+		4BBC0D552114103100119040 /* GSPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSPlayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,8 +252,8 @@
 			children = (
 				4B91E9271D800ACF00688A22 /* GSCameraManager.h */,
 				4B91E9281D800ACF00688A22 /* GSCameraManager.m */,
-				4B3D6E4E21140D90009AF6E6 /* GSPlayer.h */,
-				4B3D6E4F21140D90009AF6E6 /* GSPlayer.m */,
+				4BBC0D542114103100119040 /* GSPlayer.h */,
+				4BBC0D552114103100119040 /* GSPlayer.m */,
 			);
 			path = Function;
 			sourceTree = "<group>";
@@ -469,7 +469,7 @@
 				4B91E95F1D800ACF00688A22 /* GSCollectionViewModel.m in Sources */,
 				4B91E9601D800ACF00688A22 /* GSCollectionViewSectionModel.m in Sources */,
 				4B91E95E1D800ACF00688A22 /* GSCollectionViewItemModel.m in Sources */,
-				4B3D6E5021140D90009AF6E6 /* GSPlayer.m in Sources */,
+				4BBC0D562114103200119040 /* GSPlayer.m in Sources */,
 				4B91E9651D800ACF00688A22 /* UIImage+GSCategory.m in Sources */,
 				1CDEA9501D421EE5008701BA /* AppDelegate.m in Sources */,
 				4B3D6E4A21140CDB009AF6E6 /* GSLayer.m in Sources */,
