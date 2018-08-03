@@ -30,7 +30,9 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 @property(strong,nonatomic) AVCaptureDeviceInput * captureDeviceInput;//输入对象
 @property(strong,nonatomic) AVCaptureVideoDataOutput * captureVideoDataOutput;//视频数据输出对象（对内输出，视频数据流）
 @property(strong,nonatomic) AVCaptureStillImageOutput * captureStillImageOutput;//静态图片输出对象（对内输出，持久化保存图像）
+@property(strong,nonatomic) AVCaptureMetadataOutput * captureMetadataOutput;//元数据输出对象（对内输出，用于二维码识别等）
 @property(strong,nonatomic) AVCaptureVideoPreviewLayer * captureVideoPreviewLayer;//实时预览图层（对外输出，实时输出流数据）
+
 
 @property(strong, nonatomic) dispatch_queue_t captureVideoDataQueue;
 
@@ -69,31 +71,31 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 }
 
 
-- (instancetype)init
+- (AVCaptureDeviceInput *)captureDeviceInput
 {
-    self = [super init];
-    if (self)
+    //输入
+    if (!_captureDeviceInput)
     {
-        //会话
-        self.captureSession = [[AVCaptureSession alloc] init];
-        if ([_captureSession canSetSessionPreset:AVCaptureSessionPresetPhoto])
-        {
-            _captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
-        }
-        
-        //输入
         AVCaptureDevice * backCamera = [self cameraDevicePosition:AVCaptureDevicePositionBack];
         NSError * error = nil;
-        self.captureDeviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:backCamera error:&error];
+        _captureDeviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:backCamera error:&error];
         self.cameraError = error;
         if (error)
         {
             GSDDLog(@"%@",error.localizedDescription);
         }
         [self addObserverForDevice:backCamera];
-        
-        //输出-视频
-        self.captureVideoDataOutput = [[AVCaptureVideoDataOutput alloc] init];
+    }
+    return _captureDeviceInput;
+}
+
+
+- (AVCaptureVideoDataOutput *)captureVideoDataOutput
+{
+    //输出-视频
+    if (!_captureVideoDataOutput)
+    {
+        _captureVideoDataOutput = [[AVCaptureVideoDataOutput alloc] init];
         NSDictionary *rgbOutputSettings = [NSDictionary dictionaryWithObject:
                                            [NSNumber numberWithInt:kCMPixelFormat_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey];
         [_captureVideoDataOutput setVideoSettings:rgbOutputSettings];
@@ -107,24 +109,84 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
             [_captureSession addOutput:_captureVideoDataOutput];
         }
         [[_captureVideoDataOutput connectionWithMediaType:AVMediaTypeVideo] setEnabled:NO];
-        
-        //输出-静态图
-        self.captureStillImageOutput = [[AVCaptureStillImageOutput alloc] init];
+    }
+    return _captureVideoDataOutput;
+}
+
+
+- (AVCaptureStillImageOutput *)captureStillImageOutput
+{
+    //输出-照片
+    if (!_captureStillImageOutput)
+    {
+        _captureStillImageOutput = [[AVCaptureStillImageOutput alloc] init];
         _captureStillImageOutput.outputSettings = @{AVVideoCodecKey:AVVideoCodecJPEG,
                                                     AVVideoQualityKey:[NSNumber numberWithFloat:1]};
+    }
+    return _captureStillImageOutput;
+}
+
+
+- (AVCaptureMetadataOutput *)captureMetadataOutput
+{
+    //输出-元数据
+    if (!_captureMetadataOutput)
+    {
+        _captureMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
+        [_captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
+    }
+    return _captureMetadataOutput;
+}
+
+
+- (instancetype)init
+{
+    //默认返回 照片 选项
+    return [self initWithOpitons:GSCameraOptionStillImage];
+}
+
+
+- (instancetype)initWithOpitons:(GSCameraOption)option
+{
+    self = [super init];
+    if (self)
+    {
+        //会话
+        self.captureSession = [[AVCaptureSession alloc] init];
+        if ([_captureSession canSetSessionPreset:AVCaptureSessionPresetPhoto])
+        {
+            _captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
+        }
         
         //会话对象获得输入设备
-        if ([_captureSession canAddInput:_captureDeviceInput])
+        if ([_captureSession canAddInput:self.captureDeviceInput])
         {
             [_captureSession addInput:_captureDeviceInput];
         }
         
         //会话对象获得输出设备
-        if ([_captureSession canAddOutput:_captureStillImageOutput])
+        if (option & GSCameraOptionVideo)
         {
-            [_captureSession addOutput:_captureStillImageOutput];
+            if ([_captureSession canAddOutput:self.captureVideoDataOutput])
+            {
+                [_captureSession addOutput:_captureVideoDataOutput];
+            }
         }
-        
+        if (option & GSCameraOptionStillImage)
+        {
+            if ([_captureSession canAddOutput:self.captureStillImageOutput])
+            {
+                [_captureSession addOutput:_captureStillImageOutput];
+            }
+        }
+        if (option & GSCameraOptionMetadata)
+        {
+            if ([_captureSession canAddOutput:self.captureMetadataOutput])
+            {
+                [_captureSession addOutput:_captureMetadataOutput];
+                _captureMetadataOutput.metadataObjectTypes = @[AVMetadataObjectTypeQRCode, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code];
+            }
+        }
         
         //预览
         self.captureVideoPreviewLayer = [AVCaptureVideoPreviewLayer layerWithSession:_captureSession];
@@ -144,7 +206,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 }
 
 
-#pragma mark  Function
+#pragma mark - Function
 
 /**开始运行*/
 - (void)start
@@ -163,6 +225,12 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 /**拍照*/
 - (void)takePhotoBlock:(GSCameraTakePhotoBlock)block shutterBlock:(GSCameraTakePhotoShutterBlock)shutterBlock
 {
+    //没有设置拍照output则return
+    if (!_captureStillImageOutput || ![[_captureSession outputs] containsObject:_captureStillImageOutput])
+    {
+        return;
+    }
+    
     if (_cameraError)
     {
         //摄像头有问题则直接结束
@@ -195,6 +263,12 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
             _self.takePhotoCompletionBlock(image);
         }
     }];
+}
+
+
+- (void)setScanRect:(CGRect)scanRect
+{
+    self.captureMetadataOutput.rectOfInterest = [self.captureVideoPreviewLayer metadataOutputRectOfInterestForRect:scanRect];
 }
 
 
@@ -294,8 +368,25 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     }];
 }
 
+#pragma mark - Delegate
 
-#pragma mark  Observer
+#pragma mark AVCaptureMetadataOutputObjectsDelegate
+/**二维码扫描数据返回*/
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
+{
+    if (metadataObjects.count > 0)
+    {
+        [self stop];
+        AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects firstObject];
+        if ([self.delegate respondsToSelector:@selector(GSCameraManager:QRCodeString:)])
+        {
+            [self.delegate GSCameraManager:self QRCodeString:metadataObject.stringValue];
+        }
+    }
+}
+
+
+#pragma mark - Observer
 
 /**为设备添加KVO*/
 - (void)addObserverForDevice:(AVCaptureDevice *)device
@@ -343,7 +434,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 }
 
 
-#pragma mark Extend
+#pragma mark - Extend
 
 /**懒加载预览视图*/
 - (GSView *)viewPreview
@@ -441,7 +532,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 }
 
 
-#pragma mark  Tools
+#pragma mark - Tools
 
 
 /**获取对应位置的摄像头*/

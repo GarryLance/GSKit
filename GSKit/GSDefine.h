@@ -23,6 +23,8 @@
 //block
 
 #define WEAKSELF __weak typeof(self) _self = self;
+#define WEAK_TYPE(var,_var) __weak typeof(var) _var = var;
+
 #define BLOCKSELF __block typeof(self) blockSelf = self;
 #define BLOCK_TYPE(block,_block) __block typeof(block) _block = block;
 #define BLOCK_TYPE_COPY(block,_block) __block typeof(block) _block = Block_copy(block);

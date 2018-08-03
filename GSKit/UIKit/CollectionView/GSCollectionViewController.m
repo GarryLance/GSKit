@@ -101,6 +101,7 @@
         [itemsSectionDict setObject:itemModels forKey:sectionModel];
     }
     
+    //将配置好的section和item的模型数据存储到dataModel中，并选中该dataModel使用
     GSCollectionDataModel * dataModel = [[GSCollectionDataModel alloc] init];
     dataModel.gs_sectionModels = sectionModels;
     dataModel.gs_itemsSectionDict = itemsSectionDict;

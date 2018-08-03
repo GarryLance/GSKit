@@ -22,6 +22,8 @@ typedef NS_ENUM(NSInteger,GSCollectionItemType)
 
 @class GSCollectionViewItem;
 
+typedef void(^GSItemSetSelected)(BOOL selected);
+
 typedef void(^GSItemFirstLoadBlock)(__kindof GSCollectionViewItem * item);
 typedef BOOL(^GSItemWillSetupDataBlock)(__kindof GSCollectionViewItem * item, __kindof GSCollectionViewItemModel * model);
 typedef void(^GSItemDidSetupDataBlock)(__kindof GSCollectionViewItem * item, __kindof GSCollectionViewItemModel * model);
@@ -38,6 +40,10 @@ typedef void(^GSItemDidSetupDataBlock)(__kindof GSCollectionViewItem * item, __k
 
 /**数据模型*/
 @property (strong, nonatomic) GSCollectionViewItemModel * gs_model;
+
+/** 选中item回调*/
+@property (strong, nonatomic) GSItemSetSelected gs_itemSetSelected;
+
 
 /**
  item首次加载回调

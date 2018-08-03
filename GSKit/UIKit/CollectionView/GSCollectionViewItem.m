@@ -28,6 +28,19 @@
 }
 
 
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    
+    GSDLog(@"%@",_gs_model.title);
+    
+    if (self.gs_itemSetSelected)
+    {
+        self.gs_itemSetSelected(selected);
+    }
+}
+
+
 - (void)setGs_itemType:(GSCollectionItemType)gs_itemType
 {
     //重复设置则直接结束

@@ -12,6 +12,13 @@
 #import "GSView.h"
 
 
+typedef NS_OPTIONS(NSInteger, GSCameraOption)
+{
+    GSCameraOptionVideo = 1 << 0,//视频
+    GSCameraOptionStillImage = 1 << 1,//照片
+    GSCameraOptionMetadata = 1 << 2,//二维码等
+};
+
 //拍照回调
 typedef void(^GSCameraTakePhotoBlock)(UIImage * image);
 //拍照时快门动画的设置回调
@@ -36,6 +43,12 @@ typedef void(^GSCameraTakePhotoShutterBlock)();
 
 #pragma mark - base
 
+/**
+ @param option GSCamera的功能类型选项
+ @return GSCameraManager实例对象
+ */
+- (instancetype)initWithOpitons:(GSCameraOption)option;
+
 /**代理*/
 @property (weak, nonatomic) id <GSCameraManagerDelegate> delegate;
 
@@ -48,8 +61,26 @@ typedef void(^GSCameraTakePhotoShutterBlock)();
 /**结束运行*/
 - (void)stop;
 
+
+#pragma mark stillImageOutput
+
 /**拍照*/
 - (void)takePhotoBlock:(GSCameraTakePhotoBlock)block shutterBlock:(GSCameraTakePhotoShutterBlock)shutterBlock;
+
+
+#pragma mark metaOutput
+
+/**有效的扫描区域(基于layerPreview的bounds)*/
+@property (assign, nonatomic) CGRect scanRect;
+
+/**是否开启脸部探测(该功能尚未完成)*/
+@property (assign, nonatomic) BOOL allowFaceDetection;
+
+/**是否打开二维码探测(该功能尚未完成)*/
+@property (assign, nonatomic) BOOL allowQRCodeDetection;
+
+
+#pragma mark - commond
 
 /**设置闪光灯*/
 - (BOOL)changeFlashMode:(AVCaptureFlashMode)flashMode;
@@ -59,12 +90,6 @@ typedef void(^GSCameraTakePhotoShutterBlock)();
 
 /**更改感兴趣的点*/
 - (void)changePointOfInterestInPreviewLayer:(CGPoint)point;
-
-/**是否开启脸部探测(该功能尚未完成)*/
-@property (assign, nonatomic) BOOL allowFaceDetection;
-
-/**是否打开二维码探测(该功能尚未完成)*/
-@property (assign, nonatomic) BOOL allowQRCodeDetection;
 
 
 #pragma mark - extend
@@ -106,5 +131,8 @@ typedef void(^GSCameraTakePhotoShutterBlock)();
 
 /**是否正在调整曝光*/
 - (void)GSCameraManager:(GSCameraManager *)manager adjustingExposure:(BOOL)adjustingExposure;
+
+/**获取二维码信息*/
+- (void)GSCameraManager:(GSCameraManager *)manager QRCodeString:(NSString *)valueString;
 
 @end

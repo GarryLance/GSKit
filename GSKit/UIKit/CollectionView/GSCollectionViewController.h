@@ -83,13 +83,13 @@
         modelsForSection:(void(^)(__kindof GSCollectionViewSectionModel * sectionModel, NSInteger section))sectionModelBlock
            modelsForItem:(void(^)(__kindof GSCollectionViewItemModel * itemModel, NSIndexPath * indexPath))itemModelBlock;
 
-/***/
+/**存放数据模型dataModels对象的字典*/
 @property (strong, nonatomic) NSMutableDictionary <NSString *, GSCollectionDataModel * > * gs_dataModels;
 
 /**保存当前dataModel*/
 - (void)saveModelsTag:(NSString *)tag;
 
-/**读取指定dataModel*/
+/**读取(加载)指定dataModel*/
 - (GSCollectionDataModel *)loadModelsTag:(NSString *)tag;
 
 /**重新加载collectionView*/

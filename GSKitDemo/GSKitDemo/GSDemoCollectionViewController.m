@@ -38,6 +38,7 @@
                                                                                            scrollDirection:UICollectionViewScrollDirectionVertical];
     
     vc.collectionView.backgroundColor = [UIColor whiteColor];
+    vc.collectionView.allowsMultipleSelection = YES;
     
     //安装模型
     [vc numberOfSections:1 numberOfItems:^NSInteger(NSInteger section) {
@@ -55,7 +56,21 @@
     {
         [vc blockForItemSection:sectionModel
              itemFirstLoadBlock:^(__kindof GSCollectionViewItem *item) {
-                
+                 
+                 WEAK_TYPE(item, _item)
+                 item.gs_itemSetSelected = ^(BOOL selected){
+                   
+                     if (selected)
+                     {
+                         _item.layer.borderWidth = 3;
+                         _item.layer.borderColor = [UIColor greenColor].CGColor;
+                     }
+                     else
+                     {
+                         _item.layer.borderWidth = 0;
+                     }
+                 };
+                 
                  item.backgroundColor = [UIColor orangeColor];
                  item.gs_titleLabel.backgroundColor = [UIColor cyanColor];
                  item.gs_itemType = GSCollectionItemTypeDetatched;
