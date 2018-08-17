@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "GSKit"
-  s.version      = "0.1.0"
+  s.version      = "0.1.2"
   s.summary      = "Garry's small kit."
 
   # This description is used to generate tags and improve search results.
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   # s.description  = <<-DESC
   #                 DESC
 
-  s.homepage     = "https://github.com/GarryLance/GSKit"
+  s.homepage     = "https://github.com/igarry/GSKit"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/GarryLance/GSKit.git", :tag => "0.1.0" }
+  s.source       = { :git => "https://github.com/igarry/GSKit.git", :tag => "0.1.2" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

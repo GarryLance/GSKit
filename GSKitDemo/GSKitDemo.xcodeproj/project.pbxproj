@@ -390,7 +390,7 @@
 				TargetAttributes = {
 					1CDEA9471D421EE5008701BA = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = HWP5B2C69Q;
+						DevelopmentTeam = LQH6B33E3K;
 					};
 					1CDEA9601D421EE5008701BA = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -618,7 +618,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				DEVELOPMENT_TEAM = HWP5B2C69Q;
+				DEVELOPMENT_TEAM = LQH6B33E3K;
 				INFOPLIST_FILE = GSKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -632,7 +632,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				DEVELOPMENT_TEAM = HWP5B2C69Q;
+				DEVELOPMENT_TEAM = LQH6B33E3K;
 				INFOPLIST_FILE = GSKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
