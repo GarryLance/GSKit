@@ -18,7 +18,7 @@
 @property(assign,nonatomic)NSInteger frameForCountSecond;
 
 @property(copy,nonatomic)void(^remainBlock)(NSInteger second);
-@property(copy,nonatomic)void(^endBlock)();
+@property(copy,nonatomic)void(^endBlock)(void);
 
 @end
 
@@ -40,7 +40,13 @@
     _secondsRemain = secondsRemain;
 }
 
-- (instancetype)initWithDiameter:(CGFloat)diameter secondRemain:(NSInteger)secondRemain secondAll:(NSInteger)secondAll lineWidth:(CGFloat)lineWidth color:(UIColor *)color secondRemainBlock:(void (^)(NSInteger))remainBlock endBlock:(void (^)())endBlock
+- (instancetype)initWithDiameter:(CGFloat)diameter
+                    secondRemain:(NSInteger)secondRemain
+                       secondAll:(NSInteger)secondAll
+                       lineWidth:(CGFloat)lineWidth
+                           color:(UIColor *)color
+               secondRemainBlock:(void(^)(NSInteger second))remainBlock
+                        endBlock:(void(^)(void))endBlock
 {
     self = [super initWithFrame:CGRectMake(0, 0, diameter, diameter)];
     if (self)

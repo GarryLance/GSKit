@@ -34,109 +34,117 @@ typedef void(^GSCameraVideoImageBlock)(UIImage * image);
 
 //摄像头浏览图层类
 @interface GSCameraLayer : GSLayer
-    
-    @end
+
+@end
 
 
 
 //摄像头管理者
 @interface GSCameraManager : NSObject
-    
+
 #pragma mark - base
-    
-    /**
-     @param option GSCamera的功能类型选项
-     @return GSCameraManager实例对象
-     */
+
+/**
+ @param option GSCamera的功能类型选项
+ @return GSCameraManager实例对象
+ */
 - (instancetype)initWithOpitons:(GSCameraOption)option;
-    
-    /**代理*/
-    @property (weak, nonatomic) id <GSCameraManagerDelegate> delegate;
-    
-    /**浏览图层*/
-    @property (strong, nonatomic, readonly) GSCameraLayer * layerPreview;
-    
-    /**开始运行*/
+
+/**代理*/
+@property (weak, nonatomic) id <GSCameraManagerDelegate> delegate;
+
+/**浏览图层*/
+@property (strong, nonatomic, readonly) GSCameraLayer * layerPreview;
+
+/**开始运行*/
 - (void)start;
-    
-    /**结束运行*/
+
+/**结束运行*/
 - (void)stop;
-    
-    
+
+
 #pragma mark stillImageOutput
-    
-    /**拍照*/
+
+/**拍照*/
 - (void)takePhotoBlock:(GSCameraTakePhotoBlock)block shutterBlock:(GSCameraTakePhotoShutterBlock)shutterBlock;
-    
+
+/**拍照，可以选择不自动停止*/
+- (void)takePhotoBlock:(GSCameraTakePhotoBlock)block shutterBlock:(GSCameraTakePhotoShutterBlock)shutterBlock autoStop:(BOOL)autoStop;
+
+
 #pragma mark videoDataOutput
-    
-    @property (copy, nonatomic) GSCameraVideoImageBlock videoImageBlock;
-    
+
+@property (copy, nonatomic) GSCameraVideoImageBlock videoImageBlock;
+
+
 #pragma mark metaOutput
-    
-    /**有效的扫描区域(基于layerPreview的bounds)*/
-    @property (assign, nonatomic) CGRect scanRect;
-    
-    /**是否开启脸部探测(该功能尚未完成)*/
-    @property (assign, nonatomic) BOOL allowFaceDetection;
-    
-    /**是否打开二维码探测(该功能尚未完成)*/
-    @property (assign, nonatomic) BOOL allowQRCodeDetection;
-    
-    
+
+/**有效的扫描区域(基于layerPreview的bounds)*/
+@property (assign, nonatomic) CGRect scanRect;
+
+/**是否开启脸部探测(该功能尚未完成)*/
+@property (assign, nonatomic) BOOL allowFaceDetection;
+
+/**是否打开二维码探测(该功能尚未完成)*/
+@property (assign, nonatomic) BOOL allowQRCodeDetection;
+
+
 #pragma mark - commond
-    
-    /**设置闪光灯*/
+
+/**设置手电筒*/
+- (BOOL)changeTourchMode:(AVCaptureTorchMode)tourchMode;
+
+/**设置闪光灯*/
 - (BOOL)changeFlashMode:(AVCaptureFlashMode)flashMode;
-    
-    /**设置前后摄像头*/
+
+/**设置前后摄像头*/
 - (BOOL)changeCameraPosition:(AVCaptureDevicePosition)position;
-    
-    /**更改感兴趣的点*/
+
+/**更改感兴趣的点*/
 - (void)changePointOfInterestInPreviewLayer:(CGPoint)point;
-    
-    
+
+
 #pragma mark - extend
-    
-    /**
-     浏览视图
-     @discussion 本视图自带changePointOfInterestInPreviewLayer(更改兴趣点)的事件。
-     */
-    @property (strong, nonatomic, readonly) GSView * viewPreview;
-    
-    /**
-     对焦或调整曝光时显示的图片
-     @discussion 当设置了该图片后，发生对焦时会产生基于该图片的动画(该功能尚未完成)。
-     */
-    @property (strong, nonatomic) UIImage * imageForIntresetPoint;
-    
-    /**
-     脸部探测覆盖图
-     @discussion 当设置了该图片后，发生脸部识别时会产生基于该图片的动画(该功能尚未完成)。
-     */
-    @property (strong, nonatomic) UIImage * imageForFaceDetection;
-    
-    /**
-     二维码探测覆盖图
-     @discussion 当设置了该图片后，发生二维码识别时会产生基于该图片的动画(该功能尚未完成)。
-     */
-    @property (strong, nonatomic) UIImage * imageForQRCodeDetection;
-    
-    @end
+
+/**
+ 浏览视图
+ @discussion 本视图自带changePointOfInterestInPreviewLayer(更改兴趣点)的事件。
+ */
+@property (strong, nonatomic, readonly) GSView * viewPreview;
+
+/**
+ 对焦或调整曝光时显示的图片
+ @discussion 当设置了该图片后，发生对焦时会产生基于该图片的动画。
+ */
+@property (strong, nonatomic) UIImage * imageForIntresetPoint;
+
+/**
+ 脸部探测覆盖图
+ @discussion 当设置了该图片后，发生脸部识别时会产生基于该图片的动画(该功能尚未完成)。
+ */
+@property (strong, nonatomic) UIImage * imageForFaceDetection;
+
+/**
+ 二维码探测覆盖图
+ @discussion 当设置了该图片后，发生二维码识别时会产生基于该图片的动画(该功能尚未完成)。
+ */
+@property (strong, nonatomic) UIImage * imageForQRCodeDetection;
+
+@end
 
 
 
 @protocol GSCameraManagerDelegate <NSObject>
-    
-    @optional
-    
-    /**是否正在对焦*/
+
+@optional
+
+/**是否正在对焦*/
 - (void)GSCameraManager:(GSCameraManager *)manager adjustingFocus:(BOOL)adjustingFocus;
-    
-    /**是否正在调整曝光*/
+
+/**是否正在调整曝光*/
 - (void)GSCameraManager:(GSCameraManager *)manager adjustingExposure:(BOOL)adjustingExposure;
-    
-    /**获取二维码信息*/
+
+/**获取二维码信息*/
 - (void)GSCameraManager:(GSCameraManager *)manager QRCodeString:(NSString *)valueString;
-    
-    @end
+
+@end

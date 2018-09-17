@@ -24,7 +24,13 @@
  @param color         颜色
  @returns 倒数视图
  */
-- (instancetype)initWithDiameter:(CGFloat)diameter secondRemain:(NSInteger)secondRemain secondAll:(NSInteger)secondAll lineWidth:(CGFloat)lineWidth color:(UIColor *)color secondRemainBlock:(void(^)(NSInteger second))remainBlock endBlock:(void(^)())endBlock;
+- (instancetype)initWithDiameter:(CGFloat)diameter
+                    secondRemain:(NSInteger)secondRemain
+                       secondAll:(NSInteger)secondAll
+                       lineWidth:(CGFloat)lineWidth
+                           color:(UIColor *)color
+               secondRemainBlock:(void(^)(NSInteger second))remainBlock
+                        endBlock:(void(^)(void))endBlock;
 
 - (void)startCountDown;
 
